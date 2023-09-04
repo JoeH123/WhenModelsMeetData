@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Linear Algebra | When Models Meet Data</title>
+  <meta name="description" content="Chapter 2 Linear Algebra | When Models Meet Data" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Linear Algebra | When Models Meet Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Linear Algebra | When Models Meet Data" />
+  
+  
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="when-models-meet-data.html"/>
+<link rel="next" href="linear-mappings.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">When Models Meet Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="when-models-meet-data.html"><a href="when-models-meet-data.html"><i class="fa fa-check"></i><b>1</b> When Models Meet Data</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="when-models-meet-data.html"><a href="when-models-meet-data.html#machine-learning-algorithms"><i class="fa fa-check"></i><b>1.1</b> Machine Learning Algorithms</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="linear-algebra.html"><a href="linear-algebra.html"><i class="fa fa-check"></i><b>2</b> Linear Algebra</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="linear-algebra.html"><a href="linear-algebra.html#vectors-and-matrices"><i class="fa fa-check"></i><b>2.1</b> Vectors and Matrices</a></li>
+<li class="chapter" data-level="2.2" data-path="linear-algebra.html"><a href="linear-algebra.html#vectors"><i class="fa fa-check"></i><b>2.2</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="linear-algebra.html"><a href="linear-algebra.html#the-modulus"><i class="fa fa-check"></i><b>2.2.1</b> The Modulus</a></li>
+<li class="chapter" data-level="2.2.2" data-path="linear-algebra.html"><a href="linear-algebra.html#the-dot-product"><i class="fa fa-check"></i><b>2.2.2</b> The Dot Product</a></li>
+<li class="chapter" data-level="2.2.3" data-path="linear-algebra.html"><a href="linear-algebra.html#projections"><i class="fa fa-check"></i><b>2.2.3</b> Projections</a></li>
+<li class="chapter" data-level="2.2.4" data-path="linear-algebra.html"><a href="linear-algebra.html#changing-the-basis"><i class="fa fa-check"></i><b>2.2.4</b> Changing the Basis</a></li>
+<li class="chapter" data-level="2.2.5" data-path="linear-algebra.html"><a href="linear-algebra.html#linear-independence"><i class="fa fa-check"></i><b>2.2.5</b> Linear Independence</a></li>
+<li class="chapter" data-level="2.2.6" data-path="linear-algebra.html"><a href="linear-algebra.html#an-application"><i class="fa fa-check"></i><b>2.2.6</b> An Application</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="linear-algebra.html"><a href="linear-algebra.html#matrices"><i class="fa fa-check"></i><b>2.3</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="linear-algebra.html"><a href="linear-algebra.html#using-matrices-to-transform-space"><i class="fa fa-check"></i><b>2.3.1</b> Using Matrices to Transform Space</a></li>
+<li class="chapter" data-level="2.3.2" data-path="linear-algebra.html"><a href="linear-algebra.html#special-transformations"><i class="fa fa-check"></i><b>2.3.2</b> Special Transformations</a></li>
+<li class="chapter" data-level="2.3.3" data-path="linear-algebra.html"><a href="linear-algebra.html#matrix-composition"><i class="fa fa-check"></i><b>2.3.3</b> Matrix Composition</a></li>
+<li class="chapter" data-level="2.3.4" data-path="linear-algebra.html"><a href="linear-algebra.html#gaussian-elimination"><i class="fa fa-check"></i><b>2.3.4</b> Gaussian Elimination</a></li>
+<li class="chapter" data-level="2.3.5" data-path="linear-algebra.html"><a href="linear-algebra.html#matrix-inversion"><i class="fa fa-check"></i><b>2.3.5</b> Matrix Inversion</a></li>
+<li class="chapter" data-level="2.3.6" data-path="linear-algebra.html"><a href="linear-algebra.html#matrix-transpose"><i class="fa fa-check"></i><b>2.3.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="2.3.7" data-path="linear-algebra.html"><a href="linear-algebra.html#properties-of-inverse-and-transpose"><i class="fa fa-check"></i><b>2.3.7</b> Properties of Inverse and Transpose</a></li>
+<li class="chapter" data-level="2.3.8" data-path="linear-algebra.html"><a href="linear-algebra.html#determinants"><i class="fa fa-check"></i><b>2.3.8</b> Determinants</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="linear-mappings.html"><a href="linear-mappings.html"><i class="fa fa-check"></i><b>3</b> Linear Mappings</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="linear-mappings.html"><a href="linear-mappings.html#changing-basis"><i class="fa fa-check"></i><b>3.1</b> Changing Basis</a></li>
+<li class="chapter" data-level="3.2" data-path="linear-mappings.html"><a href="linear-mappings.html#another-example"><i class="fa fa-check"></i><b>3.2</b> Another Example</a></li>
+<li class="chapter" data-level="3.3" data-path="linear-mappings.html"><a href="linear-mappings.html#transformations-in-a-changed-basis"><i class="fa fa-check"></i><b>3.3</b> Transformations in a Changed Basis</a></li>
+<li class="chapter" data-level="3.4" data-path="linear-mappings.html"><a href="linear-mappings.html#orthogonal-matrices"><i class="fa fa-check"></i><b>3.4</b> Orthogonal Matrices</a></li>
+<li class="chapter" data-level="3.5" data-path="linear-mappings.html"><a href="linear-mappings.html#the-gram-schmidt-process"><i class="fa fa-check"></i><b>3.5</b> The Gram-Schmidt Process</a></li>
+<li class="chapter" data-level="3.6" data-path="linear-mappings.html"><a href="linear-mappings.html#an-example"><i class="fa fa-check"></i><b>3.6</b> An Example</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html"><i class="fa fa-check"></i><b>4</b> Eigenvalues and Eigenvectors</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#eigenvector-examples"><i class="fa fa-check"></i><b>4.1</b> Eigenvector Examples</a></li>
+<li class="chapter" data-level="4.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#calculating-eigenvectors"><i class="fa fa-check"></i><b>4.2</b> Calculating Eigenvectors</a></li>
+<li class="chapter" data-level="4.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#changing-the-eigenbasis"><i class="fa fa-check"></i><b>4.3</b> Changing the Eigenbasis</a></li>
+<li class="chapter" data-level="4.4" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#eigenbasis-example"><i class="fa fa-check"></i><b>4.4</b> Eigenbasis Example</a></li>
+<li class="chapter" data-level="4.5" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#the-pagerank-algorithm"><i class="fa fa-check"></i><b>4.5</b> The PageRank Algorithm</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
+<li class="divider"></li>
+<li><a href=" " target="blank"> </a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">When Models Meet Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="linear-algebra" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Linear Algebra<a href="linear-algebra.html#linear-algebra" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Linear algebra and analytic geometry play a large role in what follows in this course. Here, we combine some of the ideas from chapters 2 and 3 in order to simplify things. We will discuss vectors, matrices and the idea of a basis. Further, we then look at the geometric interpretation of these ideas.</p>
+<p>Note that we do not include everything from chapters 2 and 3 here. Certainly, there are a number of basic ideas here. However, comparing the content here to the three diagrams below, there are a number of missing ideas. In mathematical texts, there are often additional details included to create links between other branches of mathematics. For our purposes, we do not need those links.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><img src="MML4.png" /></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><img src="MML2.png" /></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><img src="MML5.png" /></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p>While all of this material can be found in <span class="citation">(<a href="#ref-Deisenroth_Faisal_Ong_2020">Deisenroth, Faisal, and Ong 2020</a>)</span>, you can also find it in other resources such as <span class="citation">(<a href="#ref-Banerjee_Roy_2014">Banerjee and Roy 2014</a>)</span>, <span class="citation">(<a href="#ref-Boas_2006">Boas 2006</a>)</span>, <span class="citation">(<a href="#ref-enwiki:1124890855">Wikipedia contributors 2022</a>)</span> and <span class="citation">(<a href="#ref-Strang_2009">Strang 2009</a>)</span>.</p>
+<div id="vectors-and-matrices" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Vectors and Matrices<a href="linear-algebra.html#vectors-and-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consider the problem of solving the system of equations given by <span class="math display">\[3x + 4y + 2z= 10\]</span> <span class="math display">\[2x - y + 5z= 3\]</span> <span class="math display">\[x-5y + 4z = -3.\]</span> It is often difficult to solve large systems of equations by hand. Thus, we may want to use a computer algebra system like MAPLE or R in general. Solving a system of equations is an example of a linear algebra problem. We have constant linear coefficients (3, 4, 2, -1, 5, -5) that relate the input variables <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span> to the outputs 10, 3 and -3.</p>
+<p>We can think about a vector <span class="math inline">\(\begin{pmatrix}x \\ y \\ z \end{pmatrix}\)</span>, that describes the values of <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span>. The constant terms can be described in a similar way <span class="math inline">\(\begin{pmatrix}10 \\ 3 \\ -3 \end{pmatrix}\)</span>. We can also write down a matrix of coefficients <span class="math inline">\(\begin{pmatrix}3 &amp; 4 &amp; 2\\ 2 &amp; -1 &amp; 5\\ 1 &amp; -5 &amp; 4 \end{pmatrix}\)</span>. This system can be expressed as <span class="math display">\[\begin{pmatrix}3 &amp; 4 &amp; 2\\ 2 &amp; -1 &amp; 5\\ 1 &amp; -5 &amp; 4 \end{pmatrix} \begin{pmatrix}x \\ y \\ z \end{pmatrix} = \begin{pmatrix}10 \\ 3 \\ -3 \end{pmatrix},\]</span> using matrix notation.</p>
+<p>We can think of a vector as an object that moves about space. This could be a physical space like <span class="math inline">\(\mathbb{R}^n\)</span>, or a space of data. In data science, we think of a vector as a list of attributes of an object whilst in mathematics and physics, we normally think of a vector moving around physical space.</p>
+<p>As an example, consider the attributes of a house. The house could be 2500 square feet, it might have three bedrooms, it might have two bathroom and it might be worth $500,000. Thus, the vector representing this house would be <span class="math display">\[\begin{pmatrix} 2500 \text{ft}^2\\ 3\text{ bedrooms}\\ 2 \text{ bathrooms}\\ \$500,000 \end{pmatrix} .\]</span>
+Therefore, the generalized idea of moving about space includes the description of the attributes of an object.</p>
+<p>Vectors follow two basic rules: addition and multiplication by a scalar number. If we think about a vector as a geometric object starting at the origin. Vector addition is done tip to tail.</p>
+<pre><code>## Warning: package &#39;matlib&#39; was built under R version 4.2.2</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Here, <span class="math inline">\(r = \begin{pmatrix}4\\2 \end{pmatrix}\)</span> while <span class="math inline">\(s = \begin{pmatrix} 1 \\ 3 \end{pmatrix}\)</span>. We shift <span class="math inline">\(s\)</span> so the the tail of <span class="math inline">\(s\)</span> is at the tip of <span class="math inline">\(r\)</span> and so the resulting vector from the origin to the tip of the new location of <span class="math inline">\(s\)</span> is defined to be <span class="math inline">\(r + s\)</span>. If you compute <span class="math inline">\(s + r\)</span>, you will get the same vector and thus <span class="math inline">\(r+s=s+r\)</span>.</p>
+<p>Scalar multiplication is defined by repeated addition of a vector.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>We could also create vectors that are half as long or twice as long, etc. What we mean by <span class="math inline">\(-a\)</span> is a vector with the same length of <span class="math inline">\(a\)</span> going in the opposite direction.</p>
+<p>We define space by two vectors. The one that moves left to right of length 1 is <span class="math inline">\(i\)</span> and the one that moves vertically called <span class="math inline">\(j\)</span>. Thus, the vector <span class="math inline">\(r = \begin{pmatrix} 4\\2 \end{pmatrix} = 4i + 2j\)</span>.</p>
+<p>As another example, consider <span class="math inline">\(a = \begin{pmatrix} 2\\1 \end{pmatrix}\)</span> and <span class="math inline">\(b = \begin{pmatrix}3 \\-4\end{pmatrix}\)</span>. We would then say <span class="math display">\[a + b = \begin{pmatrix} 2\\1 \end{pmatrix}+ \begin{pmatrix}3 \\-4\end{pmatrix} = (2i+1j) + (3i - 4j) = 5i-3j = \begin{pmatrix}5\\-3 \end{pmatrix}.\]</span></p>
+<p>Note that one can show, using this definition, that associativity applies. Addition of vectors can be done in any order with as many vectors as you want. For scalar multiplication, we can see that <span class="math display">\[ -2a = -2 \begin{pmatrix} 2\\1 \end{pmatrix} = -2(2i+1j) = -4i-2j = \begin{pmatrix} -4\\-2 \end{pmatrix}.\]</span> It is also worth noting that this defines subtraction - simply addition by a negative multiple of 1.</p>
+<p>Referring to the house example, if we added two house vectors together, we would have 5000 square feet, 6 bedrooms, 4 bathrooms and it would cost us $1,000,000. That is what we mean by twice a house - or simply two houses next to each other.</p>
+</div>
+<div id="vectors" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Vectors<a href="linear-algebra.html#vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We define two things; the length of a vector, also called its size, and the dot product of a vector, also called it’s inner scalar or projection product.</p>
+<div id="the-modulus" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> The Modulus<a href="linear-algebra.html#the-modulus" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When we define a vector, we did it without reference to any coordinate system. In fact, the geometric object, just has two properties, its length and its direction. So irrespective of the coordinate system we decided to use, we want to know how to calculate these two properties of length and direction. If the coordinate system was constructed out of two unit vectors that are orthogonal to each other, like <span class="math inline">\(i = \begin{pmatrix}1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(j = \begin{pmatrix}0 \\ 1 \end{pmatrix}\)</span> in <span class="math inline">\(\mathbb{R}^2\)</span>, then we can say that a vector <span class="math inline">\(r\)</span> is a linear combination of <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>. That is, <span class="math display">\[r =a \times i + b \times j.\]</span> When we say <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> are unit vectors, we mean their length is 1.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>By the Pythagorean Theorem, the length of <span class="math inline">\(r\)</span> is given by the hypotenuse. So, if we draw a triangle, then we’ve got length <span class="math inline">\(ai\)</span>. This has length <span class="math inline">\(a\)</span>, because <span class="math inline">\(i\)</span> is of length one. The perpendicular side is <span class="math inline">\(bj\)</span> with length <span class="math inline">\(b\)</span>. So <span class="math inline">\(r^2 = a^2 + b^2\)</span>.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Rather than dealing with <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, we can write <span class="math inline">\(r = ai + bj = \begin{pmatrix}a \\ b \end{pmatrix}\)</span>. In our previous example, <span class="math display">\[r = 3i + 5j = \begin{pmatrix}3 \\ 5 \end{pmatrix}.\]</span></p>
+<p>The analysis so far has been for two spatial directions defined by unit vectors <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> that are at right angles to each other. However, the definition works more generally. The length of a vector <span class="math inline">\(r\)</span>, denoted <span class="math inline">\(|r|\)</span>, is always the square root of the sum of the squares of the components, <span class="math display">\[|r| = \left|\begin{pmatrix} a \\ b \\ \vdots \\ n \end{pmatrix} \right| = \sqrt{a^2 + b^2 + \cdots + n^2}.\]</span> In our example, the length of <span class="math inline">\(r\)</span> is <span class="math display">\[|r| = \sqrt{3^2+5^2} = \sqrt{34}.\]</span></p>
+</div>
+<div id="the-dot-product" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> The Dot Product<a href="linear-algebra.html#the-dot-product" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The dot product is one way to multiply two vectors. Given two vectors, <span class="math inline">\(r = \begin{pmatrix} r_i \\ r_j \end{pmatrix}\)</span> and <span class="math inline">\(s = \begin{pmatrix} s_i \\ s_j \end{pmatrix}\)</span>, then <span class="math display">\[r \cdot s = r_is_i + r_js_j.\]</span> For longer vectors of equal length, the dot product is defined similarly. For example, if <span class="math inline">\(r = \begin{pmatrix} 2 \\ 1 \end{pmatrix}\)</span> and <span class="math inline">\(s = \begin{pmatrix} 4 \\ 3 \end{pmatrix}\)</span>, then <span class="math display">\[r \cdot s = 2 \times 4 + 1\times 3 = 11.\]</span></p>
+<p>Note that the dot product is a scalar number. It is also commutative which means that <span class="math inline">\(r \cdot s = s \cdot r\)</span>. Next, the dot product is distributive over addition. Thus, <span class="math inline">\(r \cdot (s + t) = r \cdot s + r \cdot t\)</span>. Fourthly, the dot product is associative over scalar multiplication. So, for a scalar <span class="math inline">\(a\)</span> and vectors <span class="math inline">\(r\)</span> and <span class="math inline">\(s\)</span>, we know that <span class="math inline">\(r \cdot(as) = a(r \cdot s)\)</span>. Finally, we can note is that <span class="math inline">\(r \cdot r = |r|^2\)</span>.</p>
+<p>The cosine rule from algebra states that <span class="math display">\[c^2 = a^2 + b^2 - 2ab\cos \theta,\]</span> where <span class="math inline">\(\theta\)</span> is the angle between sides <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>We translate that into a vector notation with vectors <span class="math inline">\(r\)</span> and <span class="math inline">\(s\)</span>. In terms of sizes, we can then say that <span class="math display">\[|r-s|^2 = |r|^2 + |s|^2 - 2|r||s|\cos \theta,\]</span> where <span class="math inline">\(\theta\)</span> is the angle between <span class="math inline">\(r\)</span> and <span class="math inline">\(s\)</span>.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>We can multiply this out using our dot-product. Here <span class="math display">\[|r - s|^2 = (r-s) \cdot (r-s) = r \cdot r - 2s \cdot r + s \cdot s = |r|^2 - 2 s \cdot r + |s|^2.\]</span> Comparing that to the cosine law, we see that <span class="math display">\[s \cdot r = |r||s| \cos \theta.\]</span> Thus, we find out something about the extent to which the vectors go in the same direction. If the vectors are perpendicular to each other, <span class="math inline">\(\cos \theta = 0\)</span>, so <span class="math inline">\(s \cdot r = 0\)</span>. If the vectors are parallel, <span class="math inline">\(\cos \theta = 1\)</span>, so <span class="math inline">\(s \cdot r = |s||r|\)</span>. If <span class="math inline">\(s\)</span> and <span class="math inline">\(r\)</span> are in opposite directions, then <span class="math inline">\(\cos \theta = -1\)</span> and <span class="math inline">\(s \cdot r = -|s||r|\)</span>.</p>
+</div>
+<div id="projections" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Projections<a href="linear-algebra.html#projections" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consider the right triangle formed when we take vectors <span class="math inline">\(r\)</span> and <span class="math inline">\(s\)</span> and drop a line from the end of <span class="math inline">\(s\)</span> perpendicular to <span class="math inline">\(r\)</span>. The projection vector can be thought of as the shadow of <span class="math inline">\(s\)</span> onto <span class="math inline">\(r\)</span>. For that reason, this vector is called the scalar projection of <span class="math inline">\(s\)</span> onto <span class="math inline">\(r\)</span>. We can determine the scalar projection by <span class="math display">\[\text{scalar projection of s onto r} = \dfrac{r \cdot s}{|r|}.\]</span> To determine the vector, called the vector projection of <span class="math inline">\(s\)</span> onto <span class="math inline">\(r\)</span>, we compute <span class="math display">\[\text{vector projection of s onto r} = \dfrac{r \cdot s}{|r|} \times \dfrac{r}{|r|}.\]</span></p>
+<pre><code>## Warning in arrows(..., angle = ang): &quot;color&quot; is not a graphical parameter
+
+## Warning in arrows(..., angle = ang): &quot;color&quot; is not a graphical parameter
+
+## Warning in arrows(..., angle = ang): &quot;color&quot; is not a graphical parameter
+
+## Warning in arrows(..., angle = ang): &quot;color&quot; is not a graphical parameter
+
+## Warning in arrows(..., angle = ang): &quot;color&quot; is not a graphical parameter
+
+## Warning in arrows(..., angle = ang): &quot;color&quot; is not a graphical parameter
+
+## Warning in arrows(..., angle = ang): &quot;color&quot; is not a graphical parameter</code></pre>
+<pre><code>## Warning in text.default(xl, yl, labels, cex = cex.lab, pos = pos.lab, ...):
+## &quot;color&quot; is not a graphical parameter</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="changing-the-basis" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Changing the Basis<a href="linear-algebra.html#changing-the-basis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>What we haven’t talked about is the coordinate system that we use to describe space. Consider the coordinate system defined by unit vectors <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span>.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Here, <span class="math inline">\(r = 3e_1 + 4e_2 = \begin{pmatrix}3 \\ 4 \end{pmatrix}\)</span>. However, the selection of <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span> is a little arbitrary. For example, we could set up a green coordinate system with vectors <span class="math inline">\(b_1 = \begin{pmatrix}2 \\ 1 \end{pmatrix}\)</span> and <span class="math inline">\(b_2 = \begin{pmatrix} -2\\4\end{pmatrix}\)</span>.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>We can now describe <span class="math inline">\(r\)</span> in terms of the vectors <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span>. The vectors we use to define the space (be they <span class="math inline">\(e\)</span>’s, <span class="math inline">\(b\)</span>’s or something else) are called basis vectors. Thus, the vector used to describe <span class="math inline">\(r\)</span> only have meaning if we know the basis vectors. In the basis defined by <span class="math inline">\(e\)</span>, we define <span class="math inline">\(r\)</span> as the vector <span class="math inline">\(r_e= \begin{pmatrix} 3 \\ 4\end{pmatrix}\)</span>. In the basis described by the <span class="math inline">\(b\)</span> vectors, we would describe <span class="math inline">\(r\)</span> as <span class="math inline">\(r_b= \begin{pmatrix} 2 \\ 1/2 \end{pmatrix}\)</span>. The vector <span class="math inline">\(r\)</span> exists completely independently of the coordinate system we use to describe the numbers in the list, describing <span class="math inline">\(r\)</span>.</p>
+<p>Now, if the new basis vectors, <span class="math inline">\(b\)</span>, are perpendicular to each other, then the dot product has a nice application. We can determine the value of <span class="math inline">\(r_b\)</span>, if we can describe the <span class="math inline">\(b\)</span> vectors in terms of the <span class="math inline">\(e\)</span> vectors. Here, <span class="math inline">\(b_1 = \begin{pmatrix}2 \\ 1 \end{pmatrix}\)</span> and <span class="math inline">\(b_2 = \begin{pmatrix} -2\\4\end{pmatrix}\)</span> in terms of vectors <span class="math inline">\(e\)</span>. (In this case, the <span class="math inline">\(b\)</span> vectors are orthogonal - this can be checked by taking their dot product). By projecting <span class="math inline">\(r\)</span> onto <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span>, we find two vectors in the direction of <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span>, each with lengths representing how much of those vectors is required to create <span class="math inline">\(r\)</span>. Looking at the diagram below, it appears we need 2 <span class="math inline">\(b_1\)</span> vectors and only 1/2 of a <span class="math inline">\(b_2\)</span> vector.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Mathematically, we calculate <span class="math inline">\(r_b\)</span> by taking scalar projections. The scalar projection of <span class="math inline">\(r\)</span> onto <span class="math inline">\(b_1\)</span> is <span class="math display">\[\dfrac{r_e \cdot b_1}{|b_1|^2}  = \dfrac{3(2) + 4(1)}{\sqrt{2^2+1^2}^2} = \dfrac{10}{5} = 2.\]</span> The scalar projection of <span class="math inline">\(r\)</span> onto <span class="math inline">\(b_2\)</span> is <span class="math display">\[\dfrac{r_e \cdot b_2}{|b_2|^2} = \dfrac{3(-2) + 4(4)}{\sqrt{(-2)^2+4^2}^2} = \dfrac{10}{20} = \dfrac{1}{2}.\]</span></p>
+<p>Thus, we can see that <span class="math inline">\(r_b\)</span> is simply the vector that has first component 2 and second component 1/2, <span class="math inline">\(r_b = \begin{pmatrix} 2 \\ 1/2 \end{pmatrix}\)</span>, as illustrated in the diagram. Therefore, vectors can be re-described using a basis that is not the traditional basis provided that the new basis vectors are orthogonal to each other.</p>
+</div>
+<div id="linear-independence" class="section level3 hasAnchor" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Linear Independence<a href="linear-algebra.html#linear-independence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A basis is a set of <span class="math inline">\(n\)</span> vectors that are not linear combinations of each other (they are said to be linearly independent) and they span (describe in terms of linear combinations) all points in the space. The space is then <span class="math inline">\(n\)</span> dimensional.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>For example, consider the vectors <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span>. By taking linear combinations of <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span>, we can create any vector in <span class="math inline">\(\mathbb{R}^2\)</span>. If we consider a third vector <span class="math inline">\(b_3\)</span>, it must not be a linear combination of <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span> to be considered part of the basis. Thus, <span class="math display">\[b_3 \not = a_1 b_1 + a_2 b_2,\]</span> for any real numbers <span class="math inline">\(a_1\)</span> and <span class="math inline">\(a_2\)</span>. If this were true, we would say <span class="math inline">\(b_3\)</span> is linearly independent.</p>
+<p>Note that our basis need not be unit vectors nor do they have to be orthogonal. However, it is easier if they are. So, a good trick is to try to use unit vectors that are orthogonal to each other.</p>
+</div>
+<div id="an-application" class="section level3 hasAnchor" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> An Application<a href="linear-algebra.html#an-application" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consider a neural network in machine learning that recognizes faces. This sort of neural network may want to make some transformation of all the pixels into a new basis that describes the nose shape, the skin tone, the distance between the eyes, etc. Thus, the goal of the learning process of the neural network is going to be to derive a set of basis vectors that extract the most information-rich features of the faces.</p>
+</div>
+</div>
+<div id="matrices" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Matrices<a href="linear-algebra.html#matrices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We have seen the problem of solving the system of equations given by
+<span class="math display">\[3x + 4y + 2z= 10\]</span> <span class="math display">\[2x - y + 5z= 3\]</span> <span class="math display">\[x-5y + 4z = -3.\]</span>
+We begin by constructing a matrix <span class="math display">\[\begin{pmatrix}3 &amp; 4 &amp; 2\\ 2 &amp; -1 &amp; 5\\ 1 &amp; -5 &amp; 4 \end{pmatrix} \begin{pmatrix}x \\ y \\ z \end{pmatrix} = \begin{pmatrix}10 \\ 3 \\ -3 \end{pmatrix},\]</span> representing the problem. We can multiply the matrix by the vector by saying <span class="math display">\[\begin{pmatrix}3 &amp; 4 &amp; 2\\ 2 &amp; -1 &amp; 5\\ 1 &amp; -5 &amp; 4 \end{pmatrix} \begin{pmatrix}x \\ y \\ z \end{pmatrix} = \begin{pmatrix}3x+ 4y +2z\\ 2x -1y +5z\\ 1x-5y +4z \end{pmatrix}.\]</span> So, we take the entries in row one and multiply each one by the corresponding entry in the vector and add them up. We do the same with rows 2 and 3. This gives us back the original system of equations.</p>
+<div id="using-matrices-to-transform-space" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Using Matrices to Transform Space<a href="linear-algebra.html#using-matrices-to-transform-space" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Notice that if we take a matrix <span class="math inline">\(\begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}\)</span> and multiply it by the unit vector <span class="math inline">\(\begin{pmatrix} 1 \\ 0 \end{pmatrix}\)</span>. The result is <span class="math display">\[\begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 1 \\ 3 \end{pmatrix}.\]</span> Similarly, if we multiply by the other unit vector, we get <span class="math display">\[\begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}\begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 2 \\ 4 \end{pmatrix}.\]</span> Thus, multiplying a matrix by a unit vector simply gives the vector of terms in that variable or direction.</p>
+<p>Some properties of matrices that are important include that for a matrix <span class="math inline">\(A\)</span> and a vector <span class="math inline">\(r\)</span> and <span class="math inline">\(s\)</span> and scalar <span class="math inline">\(n\)</span>, <span class="math display">\[A(nr) = n(Ar)\]</span> <span class="math display">\[A(r + s) = Ar + As.\]</span> Playing around with a few quick examples will help you verify these properties.</p>
+</div>
+<div id="special-transformations" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Special Transformations<a href="linear-algebra.html#special-transformations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We begin by defining the identity matrix <span class="math inline">\(I = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}\)</span>. Multiplying a vector or matrix by <span class="math inline">\(I\)</span> leaves the vector or matrix unchanged. That is, <span class="math inline">\(\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x \\ y \end{pmatrix}\)</span> for any matrix <span class="math inline">\(A\)</span>. To scale space by <span class="math inline">\(a\)</span> in the <span class="math inline">\(x\)</span> direction and <span class="math inline">\(b\)</span> in the <span class="math inline">\(y\)</span> direction, we replace <span class="math inline">\(I\)</span> by the matrix <span class="math inline">\(\begin{pmatrix} a &amp; 0 \\ 0 &amp; b \end{pmatrix}.\)</span> For example, <span class="math display">\[\begin{pmatrix} a &amp; 0 \\ 0 &amp; b \end{pmatrix}\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} ax \\ by \end{pmatrix}.\]</span> Thus, whatever we had as our <span class="math inline">\(\begin{pmatrix} x \\ y \end{pmatrix}\)</span> will be stretched (or shrunk) <span class="math inline">\(a\)</span> times in the <span class="math inline">\(x\)</span> direction and <span class="math inline">\(b\)</span> times in the <span class="math inline">\(y\)</span> direction. In essence, we have changed the size of our grid space from 1 x 1 to a x b.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>If we want to flip the matrix in the negative direction, simply make the entries in the identity matrix negative rather than positive. Here, <span class="math inline">\(\begin{pmatrix} -1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix}\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} -x \\ -y \end{pmatrix}\)</span>. Combining this type of transformation with an expansion or contraction allows us to create grids of any size in any direction.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Another matrix to consider is <span class="math inline">\(\begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}\)</span>. This matrix flips everything about the 45 degree line. The same matrix with -1 in place of 1 will flip over the 45 degree line then again over the <span class="math inline">\(x\)</span>- axis.</p>
+<p>While the goal here is not to teach linear algebra, we do need some of these ideas for data science. For example, for facial recognition, we cannot assume that every picture has a face that faced forward and was exactly centered with the exact same level of focus on the face. Thus, we need to stretch, shear or rotate the face based on these sorts of transformations.</p>
+</div>
+<div id="matrix-composition" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Matrix Composition<a href="linear-algebra.html#matrix-composition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you want to do any shape alteration, such as all the pixels in an image of a face or something like that, then you can always make that shape change out of some combination of rotations, shears, stretches and inverses. That is, one can apply one translation <span class="math inline">\(A_1\)</span> to a vector <span class="math inline">\(r\)</span>. Then, applying a second translation <span class="math inline">\(A_2\)</span> to the results, then one has, in essence performed a composition of two translations.</p>
+<p>Consider an example in which we want to rotate our vector 90 degrees clockwise. In this case, our first standard basis vector <span class="math inline">\(e_1\)</span> would move to <span class="math inline">\(\begin{pmatrix} 0 \\ -1 \end{pmatrix}\)</span> and our second standard basis vector <span class="math inline">\(e_2\)</span> would be rotated to become <span class="math inline">\(\begin{pmatrix} 1\\0 \end{pmatrix}\)</span>. So, our first transformation <span class="math inline">\(A_1 = \begin{pmatrix} 0 &amp;1\\ -1 &amp; 0 \end{pmatrix}\)</span>.</p>
+<p>The second transformation we want to make is to take the original basis vectors and we want to mirror these vectors across the <span class="math inline">\(y\)</span>-axis. Thus, the first basis vector <span class="math inline">\(e_1\)</span> becomes <span class="math inline">\(\begin{pmatrix} -1\\0 \end{pmatrix}\)</span> and the second basis vector <span class="math inline">\(e_2\)</span> is unchanged. Thus, <span class="math inline">\(A_2 = \begin{pmatrix} -1 &amp; 0\\0 &amp; 1 \end{pmatrix}\)</span>.</p>
+<p>Putting these transformations together, we get <span class="math inline">\(A_2 A_1 = \begin{pmatrix} -1 &amp; 0\\0 &amp; 1 \end{pmatrix} \begin{pmatrix} 0 &amp;1\\ -1 &amp; 0 \end{pmatrix}= \begin{pmatrix}0 &amp; -1\\ -1 &amp; 0 \end{pmatrix}\)</span>. Without thinking about this geometrically, the multiplication is done by multiplying each row of <span class="math inline">\(A_2\)</span> by each column of <span class="math inline">\(A_1\)</span> and taking every combination of these.</p>
+<p>Note that doing <span class="math inline">\(A_2\)</span> to <span class="math inline">\(A_1\)</span> is not the same thing as doing <span class="math inline">\(A_1\)</span> to <span class="math inline">\(A_2\)</span>. Thus, matrix multiplication (composition of matrix translations) is not commutative. We can show this by noting that <span class="math inline">\(A_1 A_2 = \begin{pmatrix} 0 &amp; 1\\ 1 &amp; 0 \end{pmatrix}\)</span>. So, while matrix multiplication is associative, <span class="math display">\[A_3(A_2A_1) = (A_3A_2)A_1\]</span> but it is not commutative and <span class="math inline">\(A_1A_2 \not = A_2A_1,\)</span> in general.</p>
+</div>
+<div id="gaussian-elimination" class="section level3 hasAnchor" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Gaussian Elimination<a href="linear-algebra.html#gaussian-elimination" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Finally, we can solve our system of equations problem given by
+<span class="math display">\[3x + 4y + 2z= 10\]</span> <span class="math display">\[2x - y + 5z= 3\]</span> <span class="math display">\[x-5y + 4z = -3.\]</span></p>
+<p>We rewrote this as <span class="math display">\[\begin{pmatrix}3 &amp; 4 &amp; 2\\ 2 &amp; -1 &amp; 5\\ 1 &amp; -5 &amp; 4 \end{pmatrix} \begin{pmatrix}x \\ y \\ z \end{pmatrix} = \begin{pmatrix}10 \\ 3 \\ -3 \end{pmatrix}.\]</span></p>
+<p>A matrix is in row echelon form if it has the form <span class="math display">\[\begin{pmatrix}1 &amp; a &amp; b\\0 &amp; 1 &amp; c \\ 0 &amp; 0 &amp; 1 \end{pmatrix}.\]</span> By adding or subtracting rows of a matrix, you can convert a matrix to row echelon form without changing what the matrix tells you. In essence, you would be solving a system of equations by elimination - though, in a matrix form.</p>
+<p><span class="math display">\[\begin{pmatrix}3 &amp; 4 &amp; 2\\ 2 &amp; -1 &amp; 5\\ 1 &amp; -5 &amp; 4 \end{pmatrix} \begin{pmatrix}x \\ y \\ z \end{pmatrix} = \begin{pmatrix}10 \\ 3 \\ -3 \end{pmatrix}\]</span>
+First, we replace row 1 by row 1 minus row 2 (leave the xyz vector alone since that just holds the places of the variables).</p>
+<p><span class="math display">\[\begin{pmatrix}1 &amp; 5 &amp; -3\\ 2 &amp; -1 &amp; 5\\ 1 &amp; -5 &amp; 4 \end{pmatrix} \begin{pmatrix}x \\ y \\ z \end{pmatrix} = \begin{pmatrix}7 \\ 3 \\ -3 \end{pmatrix}\]</span></p>
+<p>Next, we can now replace row 2 with 2 times row 1 minus row 2 and row 3 with row 1 minus row 3.</p>
+<p><span class="math display">\[\begin{pmatrix}1 &amp; 5 &amp; -3\\ 0 &amp; 11 &amp; -11\\ 0 &amp; 10 &amp; -7 \end{pmatrix} \begin{pmatrix}x \\ y \\ z \end{pmatrix} = \begin{pmatrix}7 \\ 11 \\ 10 \end{pmatrix}\]</span>
+Next, we divide row 2 by 11.</p>
+<p><span class="math display">\[\begin{pmatrix}1 &amp; 5 &amp; -3\\ 0 &amp; 1 &amp; -1\\ 0 &amp; 10 &amp; -7 \end{pmatrix} \begin{pmatrix}x \\ y \\ z \end{pmatrix} = \begin{pmatrix}7 \\ 1 \\ 10 \end{pmatrix}\]</span></p>
+<p>We subtract 10 times row 2 from row 3 and replace row 3 with that row.</p>
+<p><span class="math display">\[\begin{pmatrix}1 &amp; 5 &amp; -3\\ 0 &amp; 1 &amp; -1\\ 0 &amp; 0 &amp; 3 \end{pmatrix} \begin{pmatrix}x \\ y \\ z \end{pmatrix} = \begin{pmatrix}7 \\ 1 \\ 0 \end{pmatrix}\]</span>
+Finally, we divide row 3 by 3 to get row echilon form.</p>
+<p><span class="math display">\[\begin{pmatrix}1 &amp; 5 &amp; -3\\ 0 &amp; 1 &amp; -1\\ 0 &amp; 0 &amp; 1 \end{pmatrix} \begin{pmatrix}x \\ y \\ z \end{pmatrix} = \begin{pmatrix}7 \\ 1 \\ 0 \end{pmatrix}\]</span></p>
+<p>So, we know that <span class="math inline">\(z = 0\)</span>, and by back substituting in row 2 (essentially adding rows 2 and 3), we know <span class="math inline">\(y = 1\)</span>.</p>
+<p><span class="math display">\[\begin{pmatrix}1 &amp; 5 &amp; -3\\ 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 1 \end{pmatrix} \begin{pmatrix}x \\ y \\ z \end{pmatrix} = \begin{pmatrix}7 \\ 1 \\ 0 \end{pmatrix}\]</span></p>
+<p>By back substituting in row 1 (adding 3 row 3 and -5 row 2 to row 1), we know that <span class="math inline">\(x = 2\)</span>.</p>
+<p><span class="math display">\[\begin{pmatrix}1 &amp; 0 &amp; 0\\ 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 1 \end{pmatrix} \begin{pmatrix}x \\ y \\ z \end{pmatrix} = \begin{pmatrix}2 \\ 1 \\ 0 \end{pmatrix}\]</span></p>
+<p>Thus, we have solved this particular case and by doing so, we have created an identity matrix on the left side. The general case will require matrix inversion but will rely heavily on our ability to create this identity matrix.</p>
+</div>
+<div id="matrix-inversion" class="section level3 hasAnchor" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> Matrix Inversion<a href="linear-algebra.html#matrix-inversion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now, consider a matrix <span class="math inline">\(A^{-1}\)</span> with the property that <span class="math inline">\(A^{-1}A = I\)</span>, where <span class="math inline">\(A = \begin{pmatrix}3 &amp; 4 &amp; 2\\ 2 &amp; -1 &amp; 5\\ 1 &amp; -5 &amp; 4 \end{pmatrix}\)</span>. In this scenario, we could solve this matrix equation by noting that <span class="math display">\[\begin{pmatrix}3 &amp; 4 &amp; 2\\ 2 &amp; -1 &amp; 5\\ 1 &amp; -5 &amp; 4 \end{pmatrix} \begin{pmatrix}x \\ y \\ z \end{pmatrix} = \begin{pmatrix}10 \\ 3 \\ -3 \end{pmatrix}\]</span>
+<span class="math display">\[A^{-1}\begin{pmatrix}3 &amp; 4 &amp; 2\\ 2 &amp; -1 &amp; 5\\ 1 &amp; -5 &amp; 4 \end{pmatrix} \begin{pmatrix}x \\ y \\ z \end{pmatrix} = A^{-1}\begin{pmatrix}10 \\ 3 \\ -3 \end{pmatrix}\]</span>
+<span class="math display">\[I \begin{pmatrix}x \\ y \\ z \end{pmatrix} = A^{-1}\begin{pmatrix}10 \\ 3 \\ -3 \end{pmatrix}\]</span>
+<span class="math display">\[\begin{pmatrix}x \\ y \\ z \end{pmatrix} = A^{-1}\begin{pmatrix}10 \\ 3 \\ -3 \end{pmatrix}\]</span></p>
+<p>In order to find this matrix <span class="math inline">\(A^{-1} = \begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13}\\ a_{21} &amp; a_{22} &amp; a_{23}\\ a_{31} &amp; a_{32} &amp; a_{33}\end{pmatrix}\)</span>, we write <span class="math display">\[ \begin{pmatrix}3 &amp; 4 &amp; 2\\ 2 &amp; -1 &amp; 5\\ 1 &amp; -5 &amp; 4 \end{pmatrix}\begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13}\\  a_{21} &amp; a_{22} &amp; a_{23}\\  a_{31} &amp; a_{32} &amp; a_{33}\end{pmatrix} = \begin{pmatrix}1 &amp; 0 &amp; 0\\ 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 1 \end{pmatrix}, \]</span> with the identity matrix on the right side of the equals sign. What we’re going to do now is to put <span class="math inline">\(A\)</span> into row echelon form while doing the same thing to the identity matrix simultaneously.</p>
+<p>As before, row 1 will be row 1 minus row 2.
+<span class="math display">\[ \begin{pmatrix}1 &amp; 5 &amp; -3\\ 2 &amp; -1 &amp; 5\\ 1 &amp; -5 &amp; 4 \end{pmatrix}\begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13}\\  a_{21} &amp; a_{22} &amp; a_{23}\\  a_{31} &amp; a_{32} &amp; a_{33}\end{pmatrix} = \begin{pmatrix}1 &amp; -1 &amp; 0\\ 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 1 \end{pmatrix}\]</span></p>
+<p>Next, row 2 becomes 2 times row 1 minus row 2 and row 3 becomes row 1 minus row 3.</p>
+<p><span class="math display">\[ \begin{pmatrix}1 &amp; 5 &amp; -3\\ 0 &amp; 11 &amp; -11\\ 0 &amp; 10 &amp; -7 \end{pmatrix}\begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13}\\  a_{21} &amp; a_{22} &amp; a_{23}\\  a_{31} &amp; a_{32} &amp; a_{33}\end{pmatrix} = \begin{pmatrix}1 &amp; -1 &amp; 0\\ 2 &amp; -3 &amp; 0\\ 1 &amp; -1 &amp; -1 \end{pmatrix}\]</span></p>
+<p>Next, we replace row 2 by row 2 minus row 3.</p>
+<p><span class="math display">\[ \begin{pmatrix}1 &amp; 5 &amp; -3\\ 0 &amp; 1 &amp; -4\\ 0 &amp; 10 &amp; -7 \end{pmatrix}\begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13}\\  a_{21} &amp; a_{22} &amp; a_{23}\\  a_{31} &amp; a_{32} &amp; a_{33}\end{pmatrix} = \begin{pmatrix}1 &amp; -1 &amp; 0\\ 1 &amp; -2 &amp; 1\\ 1 &amp; -1 &amp; -1 \end{pmatrix}\]</span></p>
+<p>We replace row 3 by 10 row 2 minus row 3.</p>
+<p><span class="math display">\[ \begin{pmatrix}1 &amp; 5 &amp; -3\\ 0 &amp; 1 &amp; -4\\ 0 &amp; 0 &amp; -33 \end{pmatrix}\begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13}\\  a_{21} &amp; a_{22} &amp; a_{23}\\  a_{31} &amp; a_{32} &amp; a_{33}\end{pmatrix} = \begin{pmatrix}1 &amp; -1 &amp; 0\\ 1 &amp; -2 &amp; 1\\ 9 &amp; -19 &amp; 11 \end{pmatrix}\]</span>
+Divide row 3 by -33.</p>
+<p><span class="math display">\[ \begin{pmatrix}1 &amp; 5 &amp; -3\\ 0 &amp; 1 &amp; -4\\ 0 &amp; 0 &amp; 1 \end{pmatrix}\begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13}\\  a_{21} &amp; a_{22} &amp; a_{23}\\  a_{31} &amp; a_{32} &amp; a_{33}\end{pmatrix} = \begin{pmatrix}1 &amp; -1 &amp; 0\\ 1 &amp; -2 &amp; 1\\ -3/11 &amp; 19/33 &amp; -1/3 \end{pmatrix}\]</span>
+We add 4 row 3 to row 2.</p>
+<p><span class="math display">\[ \begin{pmatrix}1 &amp; 5 &amp; -3\\ 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 1 \end{pmatrix}\begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13}\\  a_{21} &amp; a_{22} &amp; a_{23}\\  a_{31} &amp; a_{32} &amp; a_{33}\end{pmatrix} = \begin{pmatrix}1 &amp; -1 &amp; 0\\ -1/11 &amp; 10/33 &amp; -1/3\\ -3/11 &amp; 19/33 &amp; -1/3 \end{pmatrix}\]</span></p>
+<p>Finally 5 row 2 and -3 row 3 are added to row 1.</p>
+<p><span class="math display">\[ \begin{pmatrix}1 &amp; 0 &amp; 0\\ 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 1 \end{pmatrix}\begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13}\\  a_{21} &amp; a_{22} &amp; a_{23}\\  a_{31} &amp; a_{32} &amp; a_{33}\end{pmatrix} = \begin{pmatrix}7/11 &amp; -26/33 &amp; 2/3\\ -1/11 &amp; 10/33 &amp; -1/3\\ -3/11 &amp; 19/33 &amp; -1/3 \end{pmatrix}\]</span></p>
+<p>The inverse matrix for <span class="math inline">\(A\)</span> is the matrix on the right side <span class="math inline">\(A^{-1} = \begin{pmatrix}7/11 &amp; -26/33 &amp; 2/3\\ -1/11 &amp; 10/33 &amp; -1/3\\ -3/11 &amp; 19/33 &amp; -1/3 \end{pmatrix}\)</span>.</p>
+</div>
+<div id="matrix-transpose" class="section level3 hasAnchor" number="2.3.6">
+<h3><span class="header-section-number">2.3.6</span> Matrix Transpose<a href="linear-algebra.html#matrix-transpose" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Given a matrix <span class="math inline">\(A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>, the transpose of <span class="math inline">\(A\)</span>, which we write <span class="math inline">\(A^T\)</span> is given by the matrix <span class="math display">\[A^T = \begin{pmatrix} a &amp; c \\ b &amp; d \end{pmatrix}.\]</span> In essence, the transpose of a matrix <span class="math inline">\(A\)</span> is a matrix <span class="math inline">\(B\)</span> for which <span class="math inline">\(b_{ij} = a_{ji}\)</span>.</p>
+<p>In general, we can find <span class="math inline">\(A^T\)</span> by rewriting <span class="math inline">\(A\)</span> with rows in place of the columns and the columns in place of the rows. For example, if <span class="math inline">\(A = \begin{pmatrix} 1 &amp; 2 &amp; 3\\4 &amp; 5 &amp; 6 \end{pmatrix}\)</span>, then <span class="math inline">\(A^T = \begin{pmatrix} 1 &amp; 4 \\ 2 &amp; 5 \\ 3 &amp; 6 \end{pmatrix}\)</span>.</p>
+<p>A matrix is said to be symmetric if <span class="math inline">\(A = A^T\)</span>.</p>
+</div>
+<div id="properties-of-inverse-and-transpose" class="section level3 hasAnchor" number="2.3.7">
+<h3><span class="header-section-number">2.3.7</span> Properties of Inverse and Transpose<a href="linear-algebra.html#properties-of-inverse-and-transpose" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The following are important properties of the matrix inverse and matrix transpose:
+<span class="math display">\[\begin{align*}
+AA^{-1} &amp;= I = A^{-1}A\\
+(AB)^{-1} &amp;= B^{-1}A^{-1}\\
+(A + B)^{-1} &amp;\not = A^{-1} + B^{-1}\\
+(A^T)^T &amp;=A\\
+(A+B)^T &amp;= A^T + B^T\\
+(AB)^T &amp;= B^TA^T
+\end{align*}\]</span></p>
+<p>From here, we can see that solving a matrix equation (a system of equations given in matrix form) is pretty straight forward. If <span class="math inline">\(A\)</span> is square and invertible, then <span class="math display">\[Ax = b \Leftrightarrow x = A^{-1}b.\]</span> However, in many cases, <span class="math inline">\(A\)</span> will not be invertible and so we need a second trick:
+<span class="math display">\[Ax = b \Leftrightarrow A^TAx = A^Tb \Leftrightarrow x = (A^TA)^{-1}A^Tb.\]</span> Thus, we find x by simply finding the inverse of <span class="math inline">\(A^TA\)</span> and multiplying it by <span class="math inline">\(A^T\)</span> and <span class="math inline">\(b\)</span>. This trick can be done provided that <span class="math inline">\(A\)</span> has linearly independent columns. However, due to computational feasibility and accuracy issues, we tend not to use this method. Instead, we have a number of iterative methods such as Richardson, Jacobi or Gauss Seidel methods. These can be found in most books on numerical analysis.</p>
+</div>
+<div id="determinants" class="section level3 hasAnchor" number="2.3.8">
+<h3><span class="header-section-number">2.3.8</span> Determinants<a href="linear-algebra.html#determinants" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consider <span class="math inline">\(\begin{pmatrix} a &amp; 0 \\ 0 &amp; d \end{pmatrix}\)</span>. This matrix scales space. If our original basis vectors are the standard <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span>, the matrix scales them to <span class="math inline">\(e_1&#39; = \begin{pmatrix}a \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(e_2&#39;=\begin{pmatrix} 0 \\ d \end{pmatrix}\)</span>. As a result, the space is scaled by a factor <span class="math inline">\(ad\)</span>. This is called the determinant of the matrix.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>If we have the matrix <span class="math inline">\(\begin{pmatrix} a &amp; b \\ 0 &amp; d \end{pmatrix}\)</span>, we still scale <span class="math inline">\(e_1\)</span> by the same factor of <span class="math inline">\(a\)</span> to become <span class="math inline">\(e_1&#39; = \begin{pmatrix} a \\ 0 \end{pmatrix}\)</span>; however, <span class="math inline">\(e_2\)</span> is transformed to <span class="math inline">\(e_2&#39; = \begin{pmatrix} b \\ d \end{pmatrix}\)</span>. Thus, the space is no longer square - it is a trapezoid. However, the determinant (scaling factor) is still <span class="math inline">\(ad\)</span>.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>Now, if we instead change the matrix to <span class="math inline">\(\begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>, we end up with a diamond shape. One can prove that the area of this diamond is <span class="math inline">\(ad - bc\)</span>. That is the general equation for the determinant of a matrix <span class="math inline">\(A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>, <span class="math display">\[det(A) = ad-bc.\]</span></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>For a 2 x 2 matrix <span class="math inline">\(A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>, the inverse of the matrix can be computed as <span class="math display">\[A^{-1} = \dfrac{1}{det(A)}\begin{pmatrix} d &amp; -b \\ -c &amp; a \end{pmatrix}.\]</span> For a matrix larger than 2 x 2, simply use a built in R feature to find the determinant.</p>
+<p>One important property of the determinant is if your matrix has a row that is linearly dependent, the determinant is going to be 0. In essence, by having a linearly dependent row in the matrix, we lose a dimension. Thus, the transformation given by the matrix cannot be undone because we have lost some information by losing the dimension. Thus, it is worth checking that the determinant is non-zero before attempting a transformation.</p>
+
+</div>
+</div>
+</div>
+<h3>Bibliography<a href="bibliography.html#bibliography" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Banerjee_Roy_2014" class="csl-entry">
+Banerjee, Sudipto, and Anindya Roy. 2014. <em>Linear Algebra and Matrix Analysis for Statistics</em>. 1st edition. Boca Raton: CRC Press, Taylor &amp; Francis Group.
+</div>
+<div id="ref-Boas_2006" class="csl-entry">
+Boas, Mary L. 2006. <em>Mathematical Methods in the Physical Sciences</em>. 3rd ed. Hoboken, NJ: Wiley.
+</div>
+<div id="ref-Deisenroth_Faisal_Ong_2020" class="csl-entry">
+Deisenroth, Marc Peter, A. Aldo Faisal, and Cheng Soon Ong. 2020. <em>Mathematics for Machine Learning</em>. Cambridge ; New York, NY: Cambridge University Press. <a href="https://mml-book.github.io/book/mml-book.pdf">https://mml-book.github.io/book/mml-book.pdf</a>.
+</div>
+<div id="ref-Strang_2009" class="csl-entry">
+Strang, Gilbert. 2009. <em>Introduction to Linear Algebra</em>. 4. ed. Wellesley, Mass: Wellesley-Cambridge Press.
+</div>
+<div id="ref-enwiki:1124890855" class="csl-entry">
+Wikipedia contributors. 2022. <span>“Linear Algebra — <span>Wikipedia</span><span>,</span> the Free Encyclopedia.”</span> <a href="https://en.wikipedia.org/w/index.php?title=Linear_algebra&amp;oldid=1124890855">https://en.wikipedia.org/w/index.php?title=Linear_algebra&amp;oldid=1124890855</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="when-models-meet-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="linear-mappings.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-LinAlg.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

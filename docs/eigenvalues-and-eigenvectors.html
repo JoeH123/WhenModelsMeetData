@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Eigenvalues and Eigenvectors | When Models Meet Data</title>
+  <meta name="description" content="Chapter 4 Eigenvalues and Eigenvectors | When Models Meet Data" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Eigenvalues and Eigenvectors | When Models Meet Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Eigenvalues and Eigenvectors | When Models Meet Data" />
+  
+  
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="linear-mappings.html"/>
+<link rel="next" href="bibliography.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">When Models Meet Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="when-models-meet-data.html"><a href="when-models-meet-data.html"><i class="fa fa-check"></i><b>1</b> When Models Meet Data</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="when-models-meet-data.html"><a href="when-models-meet-data.html#machine-learning-algorithms"><i class="fa fa-check"></i><b>1.1</b> Machine Learning Algorithms</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="linear-algebra.html"><a href="linear-algebra.html"><i class="fa fa-check"></i><b>2</b> Linear Algebra</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="linear-algebra.html"><a href="linear-algebra.html#vectors-and-matrices"><i class="fa fa-check"></i><b>2.1</b> Vectors and Matrices</a></li>
+<li class="chapter" data-level="2.2" data-path="linear-algebra.html"><a href="linear-algebra.html#vectors"><i class="fa fa-check"></i><b>2.2</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="linear-algebra.html"><a href="linear-algebra.html#the-modulus"><i class="fa fa-check"></i><b>2.2.1</b> The Modulus</a></li>
+<li class="chapter" data-level="2.2.2" data-path="linear-algebra.html"><a href="linear-algebra.html#the-dot-product"><i class="fa fa-check"></i><b>2.2.2</b> The Dot Product</a></li>
+<li class="chapter" data-level="2.2.3" data-path="linear-algebra.html"><a href="linear-algebra.html#projections"><i class="fa fa-check"></i><b>2.2.3</b> Projections</a></li>
+<li class="chapter" data-level="2.2.4" data-path="linear-algebra.html"><a href="linear-algebra.html#changing-the-basis"><i class="fa fa-check"></i><b>2.2.4</b> Changing the Basis</a></li>
+<li class="chapter" data-level="2.2.5" data-path="linear-algebra.html"><a href="linear-algebra.html#linear-independence"><i class="fa fa-check"></i><b>2.2.5</b> Linear Independence</a></li>
+<li class="chapter" data-level="2.2.6" data-path="linear-algebra.html"><a href="linear-algebra.html#an-application"><i class="fa fa-check"></i><b>2.2.6</b> An Application</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="linear-algebra.html"><a href="linear-algebra.html#matrices"><i class="fa fa-check"></i><b>2.3</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="linear-algebra.html"><a href="linear-algebra.html#using-matrices-to-transform-space"><i class="fa fa-check"></i><b>2.3.1</b> Using Matrices to Transform Space</a></li>
+<li class="chapter" data-level="2.3.2" data-path="linear-algebra.html"><a href="linear-algebra.html#special-transformations"><i class="fa fa-check"></i><b>2.3.2</b> Special Transformations</a></li>
+<li class="chapter" data-level="2.3.3" data-path="linear-algebra.html"><a href="linear-algebra.html#matrix-composition"><i class="fa fa-check"></i><b>2.3.3</b> Matrix Composition</a></li>
+<li class="chapter" data-level="2.3.4" data-path="linear-algebra.html"><a href="linear-algebra.html#gaussian-elimination"><i class="fa fa-check"></i><b>2.3.4</b> Gaussian Elimination</a></li>
+<li class="chapter" data-level="2.3.5" data-path="linear-algebra.html"><a href="linear-algebra.html#matrix-inversion"><i class="fa fa-check"></i><b>2.3.5</b> Matrix Inversion</a></li>
+<li class="chapter" data-level="2.3.6" data-path="linear-algebra.html"><a href="linear-algebra.html#matrix-transpose"><i class="fa fa-check"></i><b>2.3.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="2.3.7" data-path="linear-algebra.html"><a href="linear-algebra.html#properties-of-inverse-and-transpose"><i class="fa fa-check"></i><b>2.3.7</b> Properties of Inverse and Transpose</a></li>
+<li class="chapter" data-level="2.3.8" data-path="linear-algebra.html"><a href="linear-algebra.html#determinants"><i class="fa fa-check"></i><b>2.3.8</b> Determinants</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="linear-mappings.html"><a href="linear-mappings.html"><i class="fa fa-check"></i><b>3</b> Linear Mappings</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="linear-mappings.html"><a href="linear-mappings.html#changing-basis"><i class="fa fa-check"></i><b>3.1</b> Changing Basis</a></li>
+<li class="chapter" data-level="3.2" data-path="linear-mappings.html"><a href="linear-mappings.html#another-example"><i class="fa fa-check"></i><b>3.2</b> Another Example</a></li>
+<li class="chapter" data-level="3.3" data-path="linear-mappings.html"><a href="linear-mappings.html#transformations-in-a-changed-basis"><i class="fa fa-check"></i><b>3.3</b> Transformations in a Changed Basis</a></li>
+<li class="chapter" data-level="3.4" data-path="linear-mappings.html"><a href="linear-mappings.html#orthogonal-matrices"><i class="fa fa-check"></i><b>3.4</b> Orthogonal Matrices</a></li>
+<li class="chapter" data-level="3.5" data-path="linear-mappings.html"><a href="linear-mappings.html#the-gram-schmidt-process"><i class="fa fa-check"></i><b>3.5</b> The Gram-Schmidt Process</a></li>
+<li class="chapter" data-level="3.6" data-path="linear-mappings.html"><a href="linear-mappings.html#an-example"><i class="fa fa-check"></i><b>3.6</b> An Example</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html"><i class="fa fa-check"></i><b>4</b> Eigenvalues and Eigenvectors</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#eigenvector-examples"><i class="fa fa-check"></i><b>4.1</b> Eigenvector Examples</a></li>
+<li class="chapter" data-level="4.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#calculating-eigenvectors"><i class="fa fa-check"></i><b>4.2</b> Calculating Eigenvectors</a></li>
+<li class="chapter" data-level="4.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#changing-the-eigenbasis"><i class="fa fa-check"></i><b>4.3</b> Changing the Eigenbasis</a></li>
+<li class="chapter" data-level="4.4" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#eigenbasis-example"><i class="fa fa-check"></i><b>4.4</b> Eigenbasis Example</a></li>
+<li class="chapter" data-level="4.5" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#the-pagerank-algorithm"><i class="fa fa-check"></i><b>4.5</b> The PageRank Algorithm</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
+<li class="divider"></li>
+<li><a href=" " target="blank"> </a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">When Models Meet Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="eigenvalues-and-eigenvectors" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Eigenvalues and Eigenvectors<a href="eigenvalues-and-eigenvectors.html#eigenvalues-and-eigenvectors" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The word eigen means characteristic. An eigenproblem is the problem of finding the characteristic properties.</p>
+<p>We know that we can express linear transformations using matrices. These operations include scalings, rotations, and shears. For example, we may begin with a square (in black) centred at the origin then apply a transformation (a sheer) and change the shape (in blue).</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>Now, changing this shape essentially shifts points within the original square. However, some do not shift at all. Consider 3 vectors (red, yellow, green) in the original square.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>We scale by a factor of 2 in the vertical direction and we get the following diagram.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p>We can see that the horizontal (green) vector remains unchanged. The direction of the vertical (red) vector remains the same but is doubled in length. The angle (direction) and size of the diagonal (yellow) vector have both changed. Since the horizontal and vertical vectors did not change direction, we refer to them as eigenvectors under this transformation. Since the horizontal vector did not change length, it has a corresponding eigenvalue. Since the vertical eigenvector doubled in size, it has an eigenvalue of 2. In essence, we apply a transformation to a space and look for vectors whose direction has not changed (eigenvectors) and then we measure the change in their length (eigenvalues).</p>
+<p>As a second example, consider what happens when we take the same square and sheer it without changing the area. As you can see, only one of the example vectors is an eigenvector (the green) and it has an eigenvalue of 1.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p>A third example is a rotation. As you can imagine, a rotation that is not a multiple of 90 degrees will move every vector from its original angle and thus, there will be no eigenvectors.</p>
+<div id="eigenvector-examples" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Eigenvector Examples<a href="eigenvalues-and-eigenvectors.html#eigenvector-examples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We know that an eigenvector can be thought of as a vector having the same span both before and after a transformation and the eigenvalue is the amount by which the eigenvector is stretched due to the transformation. Here we highlight some special cases.</p>
+<p>First, consider a uniform scaling in which we scale each direction by the same amount in each direction. In this case, every vector is an eigenvector.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>Next, we consider a rotation of 180 degrees. Our three example vectors all have the same span but are simply pointed in different directions. This is the only rotation (below 360 degrees) that has some eigenvectors. Indeed, you can see that all vectors are eigenvectors with eigenvalue -1.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Finally, consider a case in which we combine a horizontal shear and a vertical scaling. In this case, our horizontal (green) vector is again an eigenvector (with eigenvalue 1) and a second eigenvector exists (in purple).</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p>In machine learning, most of our data is <span class="math inline">\(n\)</span> dimensional and so scaling and shearing become more complex. Moreover, when we move to higher dimensions, any eigenvector becomes an axis of rotation.</p>
+</div>
+<div id="calculating-eigenvectors" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Calculating Eigenvectors<a href="eigenvalues-and-eigenvectors.html#calculating-eigenvectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consider a transformation <span class="math inline">\(A\)</span>. If this transformation has an eigenvector <span class="math inline">\(x\)</span>, we can say that <span class="math display">\[Ax = \lambda x\]</span> which simply means that after applying the transformation <span class="math inline">\(A\)</span> to <span class="math inline">\(x\)</span>, the vector <span class="math inline">\(x\)</span> remains on the same span (but possibly stretched by a factor of <span class="math inline">\(\lambda \in \mathbb{R}\)</span>). We rewrite this as <span class="math display">\[(A - \lambda I) x = 0,\]</span> where <span class="math inline">\(I\)</span> is the <span class="math inline">\(n \times n\)</span> identity matrix. Now, either <span class="math inline">\(A - \lambda I = 0\)</span> of <span class="math inline">\(x = 0\)</span>. The solution wherer <span class="math inline">\(x = 0\)</span> is not interesting, so we want to know when <span class="math inline">\(A - \lambda I = 0\)</span>. We do so by finding the determinant. Thus, we want to find <span class="math display">\[det(A - \lambda I) = 0.\]</span></p>
+<p>Now, consider <span class="math inline">\(A = \begin{pmatrix} a &amp; b\\c &amp; d \end{pmatrix}\)</span>. Then <span class="math display">\[det(A - \lambda I) = det\left(\begin{pmatrix} a &amp; b\\c &amp; d \end{pmatrix} - \begin{pmatrix} \lambda &amp; 0\\0 &amp; \lambda \end{pmatrix}\right) = det\begin{pmatrix} a - \lambda &amp; b\\c &amp; d - \lambda \end{pmatrix}.\]</span> The determinant here is called the characteristic polynomial and is <span class="math display">\[\lambda^2 - (a+d) \lambda + ad-bc = 0.\]</span> Are eigenvalues are simply the solution to the characteristic polynomial and these can be used to find the eigenvectors.</p>
+<p>As an example, we will apply a vertical scaling of 2 and find the eigenvalues and eigenvectors. Here, <span class="math inline">\(A = \begin{pmatrix}1 &amp; 0 \\ 0 &amp; 2 \end{pmatrix}\)</span> and so our characteristic polynomial is <span class="math display">\[\lambda^2 - 3 \lambda + 2 = (\lambda-1)(\lambda - 2) = 0.\]</span> So, <span class="math inline">\(\lambda = 1,2\)</span>.</p>
+<p>When <span class="math inline">\(\lambda = 1\)</span>, <span class="math inline">\((A - \lambda I)x = \begin{pmatrix} 0 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}\begin{pmatrix}x_1 \\ x_2 \end{pmatrix}= \begin{pmatrix}0 \\ x_2 \end{pmatrix}= 0\)</span>.
+When <span class="math inline">\(\lambda = 2\)</span>, <span class="math inline">\((A - \lambda I)x = \begin{pmatrix} -1 &amp; 0 \\ 0 &amp; 0 \end{pmatrix}\begin{pmatrix}x_1 \\ x_2 \end{pmatrix}= \begin{pmatrix}-x_1 \\ 0 \end{pmatrix}= 0\)</span>. So, when our eigenvalue <span class="math inline">\(\lambda = 1\)</span>, we have an eigenvector in which <span class="math inline">\(x_2 = 0\)</span>. Thus, any vector with <span class="math inline">\(x_2 = 0\)</span> is an eigenvector for this system. For example, any vector <span class="math inline">\(\begin{pmatrix} t \\ 0 \end{pmatrix}\)</span>. When our eigenvalue is <span class="math inline">\(\lambda = 2\)</span>, we have an eigenvector in which <span class="math inline">\(-x_1 = 0\)</span>. Thus, any vector with <span class="math inline">\(x_1 = 0\)</span> is an eigenvector for the system such as <span class="math inline">\(\begin{pmatrix} 0 \\ t \end{pmatrix}\)</span>.</p>
+<p>Consider a second example in which we rotate the system counterclockwise 90 degrees. Here <span class="math inline">\(A = \begin{pmatrix} 0 &amp; -1\\ 1 &amp; 0 \end{pmatrix}\)</span>. The characteristic polynomial in this case is <span class="math display">\[\lambda^2 + 1 = 0.\]</span> This polynomial equation has no real solutions and thus we conclude that there are no real eigenvalues (and hence no eigenvectors).</p>
+<p>Normally, we will want to find eigenvalue/ eigenvectors by computer since most problems will require large dimensional matrices and finding the roots of complicated polynomials.</p>
+</div>
+<div id="changing-the-eigenbasis" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Changing the Eigenbasis<a href="eigenvalues-and-eigenvectors.html#changing-the-eigenbasis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here we combine the idea of eigenvectors with the concept of changing basis in a procedure called diagnolization which helps make matrix operations more efficient.</p>
+<p>Consider a particle with initial location <span class="math inline">\(v_0 = \begin{pmatrix} 1/2 \\ 1 \end{pmatrix}\)</span>. The matrix <span class="math inline">\(T = \begin{pmatrix} 0.9 &amp; 0.8 \\ -1 &amp; 0.35 \end{pmatrix}\)</span> represents the change in position of the particle after a single time step. Hence, <span class="math inline">\(v_1 = Tv_0\)</span> represents the position of the particle after 1 step. After 2 time steps, we get <span class="math inline">\(v_2 = Tv_1 = T^2v_0\)</span>. After <span class="math inline">\(n\)</span> steps, we get <span class="math inline">\(v_n = T^nv_0\)</span>.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p>A matrix which consists entirely of 0’s, except possibly on the main diagonal, the matrix is called a diagonal matrix. In the case of a diagonal matrix <span class="math inline">\(T = \begin{pmatrix} a &amp; 0&amp;0\\0&amp;b&amp;0\\0&amp;0&amp;c \end{pmatrix}\)</span>, we compute <span class="math inline">\(T^n = \begin{pmatrix} a^n &amp; 0&amp;0\\0&amp;b^n&amp;0\\0&amp;0&amp;c^n \end{pmatrix}\)</span>.</p>
+<p>Let <span class="math inline">\(C\)</span> be a matrix consisting of columns of eigenvectors and <span class="math inline">\(D\)</span> the diagonal matrix with eigenvalues along the main diagonal. Then, <span class="math inline">\(T = CDC^{-1}\)</span>. However, we will note that <span class="math inline">\(T^2 = CDC^{-1}CDC^{-1} = CD^2C^{-1}\)</span>. In general, <span class="math inline">\(T^n = CD^nC^{-1}\)</span>. However, since <span class="math inline">\(D\)</span> is diagonal, computing <span class="math inline">\(D^n\)</span> is quite easy.</p>
+</div>
+<div id="eigenbasis-example" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Eigenbasis Example<a href="eigenvalues-and-eigenvectors.html#eigenbasis-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here we examine the matrix <span class="math inline">\(T = \begin{pmatrix} 1 &amp; 1 \\ 0 &amp; 2 \end{pmatrix}\)</span>. This matrix performs a vertical stretch and a shear.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>Now consider the vector <span class="math inline">\(\begin{pmatrix} -1 \\ 1 \end{pmatrix}\)</span>. Multiplying by <span class="math inline">\(T\)</span>, we get <span class="math inline">\(\begin{pmatrix} 1 &amp; 1 \\ 0 &amp; 2 \end{pmatrix}\begin{pmatrix} -1 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 2 \end{pmatrix}\)</span>. If we multiply the result by <span class="math inline">\(T\)</span> again, we get <span class="math inline">\(\begin{pmatrix} 1 &amp; 1 \\ 0 &amp; 2 \end{pmatrix}\begin{pmatrix} 0\\ 2 \end{pmatrix} = \begin{pmatrix} 2 \\ 4 \end{pmatrix}\)</span>. (You can check that this is the same as <span class="math inline">\(T^2 \begin{pmatrix} -1 \\ 1 \end{pmatrix}\)</span>).</p>
+<p>Notice that the eigenvalue and eigenvectors are <span class="math inline">\(v_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\)</span>, <span class="math inline">\(\lambda_1 = 1\)</span>, <span class="math inline">\(v_2 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}\)</span>, <span class="math inline">\(\lambda_2 = 2\)</span>. So, we can do the same computation using the diagonalization method. Here <span class="math inline">\(C = \begin{pmatrix} 1 &amp; 1 \\ 0 &amp; 1 \end{pmatrix}\)</span> and <span class="math inline">\(C^{-1} = \begin{pmatrix} 1 &amp; -1 \\ 0 &amp; 1 \end{pmatrix}\)</span>. Also, <span class="math inline">\(D = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 2 \end{pmatrix}\)</span>. Thus, <span class="math display">\[T^2 = CD^2C^{-1} = \begin{pmatrix} 1 &amp; 1 \\ 0 &amp; 1 \end{pmatrix}\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 2 \end{pmatrix}^2\begin{pmatrix} 1 &amp; -1 \\ 0 &amp; 4 \end{pmatrix} = \begin{pmatrix} 1 &amp; 3 \\ 0 &amp; 4 \end{pmatrix}.\]</span> Therefore, we arrive at our answer <span class="math display">\[\begin{pmatrix} 1 &amp; 3 \\ 0 &amp; 4 \end{pmatrix}\begin{pmatrix} -1 \\ 1 \end{pmatrix} = \begin{pmatrix} 2 \\ 4 \end{pmatrix}.\]</span></p>
+</div>
+<div id="the-pagerank-algorithm" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> The PageRank Algorithm<a href="eigenvalues-and-eigenvectors.html#the-pagerank-algorithm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The PageRank algorithm was published by and named after Google founder Larry Page and colleagues in 1998. Google uses it to decide the order of websites it displays after a search. The basic idea is that the importance of a website is related to the number of websites that link to it and from it.</p>
+<p>Consider 4 websites and the extent to which each website contains a link to another website. We can visualize this as a graph.</p>
+<pre><code>## Warning: package &#39;igraph&#39; was built under R version 4.2.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;igraph&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     decompose, spectrum</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     union</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p>We can write down the matrix that governs the links by displaying a 1 if the website given by the column links to the website in the given row. Hence we have <span class="math inline">\(\begin{pmatrix}0&amp;1&amp;0&amp;0\\1&amp;0&amp;0&amp;1\\1&amp;0&amp;0&amp;1\\1&amp;1&amp;1&amp;0 \end{pmatrix}\)</span>. Now, define <span class="math inline">\(L\)</span> as the previous matrix; however, we divide each column vector by the number of links on the website. Hence <span class="math inline">\(L = \begin{pmatrix}0&amp;1/2&amp;0&amp;0\\1/3&amp;0&amp;0&amp;1/2\\1/3&amp;0&amp;0&amp;1/2\\1/3&amp;1/2&amp;1&amp;0 \end{pmatrix}\)</span>. This matrix <span class="math inline">\(L\)</span> gives the probability of ending up on a page (by randomly), given that we are on a particular page.</p>
+<p>To determine the rank of page <span class="math inline">\(A\)</span>, we need to know three things: (a) what is your rank, (b) do you link to page <span class="math inline">\(A\)</span> and (c) how many outgoing links do you have on your page. Here, <span class="math inline">\(r_A = \sum_{j=1}^n L_{A,j}r_j\)</span> since the rank of <span class="math inline">\(A\)</span> is the sum of all of the probabilities that link to <span class="math inline">\(A\)</span> times the ranks of those particular pages. In total, <span class="math inline">\(r = Lr\)</span> because this is simply a matrix multiplication problem. If we initially assume that each rank is equal, then for 4 webpages, <span class="math inline">\(r_0 = \begin{pmatrix}1/4\\1/4\\1/4\\1/4 \end{pmatrix}\)</span> and then we multiply by <span class="math inline">\(L\)</span> repetedly, updating <span class="math inline">\(r\)</span> each time, to find the asymptotic solution. Thus <span class="math inline">\(r_{i+1} = Lr_i = L^{i+1}r_0\)</span>. Eventually, <span class="math inline">\(r_{i+1} = Lr_{i}\)</span> or <span class="math inline">\(r = Lr\)</span>. However, this means that <span class="math inline">\(r\)</span> is an eigenvector of <span class="math inline">\(L\)</span> with eigenvector 1. We simulate this to find (roughly) that <span class="math inline">\(r_{10} = \begin{pmatrix}0.12\\0.24\\0.24\\0.40 \end{pmatrix}\)</span>. Thus, website <span class="math inline">\(D\)</span> is most important and would randomly be viewed 40% of the time. <span class="math inline">\(A\)</span> is the least important and would be viewed randomly about 12% of the time. The important point here is that each website is ranked in terms of importance and thus are ranked in terms of how they should be displayed once they are searched for.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="linear-mappings.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliography.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-EigenvaluesAndVectors.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

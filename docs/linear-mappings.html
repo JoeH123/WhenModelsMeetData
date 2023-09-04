@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Linear Mappings | When Models Meet Data</title>
+  <meta name="description" content="Chapter 3 Linear Mappings | When Models Meet Data" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Linear Mappings | When Models Meet Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Linear Mappings | When Models Meet Data" />
+  
+  
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="linear-algebra.html"/>
+<link rel="next" href="eigenvalues-and-eigenvectors.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">When Models Meet Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="when-models-meet-data.html"><a href="when-models-meet-data.html"><i class="fa fa-check"></i><b>1</b> When Models Meet Data</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="when-models-meet-data.html"><a href="when-models-meet-data.html#machine-learning-algorithms"><i class="fa fa-check"></i><b>1.1</b> Machine Learning Algorithms</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="linear-algebra.html"><a href="linear-algebra.html"><i class="fa fa-check"></i><b>2</b> Linear Algebra</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="linear-algebra.html"><a href="linear-algebra.html#vectors-and-matrices"><i class="fa fa-check"></i><b>2.1</b> Vectors and Matrices</a></li>
+<li class="chapter" data-level="2.2" data-path="linear-algebra.html"><a href="linear-algebra.html#vectors"><i class="fa fa-check"></i><b>2.2</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="linear-algebra.html"><a href="linear-algebra.html#the-modulus"><i class="fa fa-check"></i><b>2.2.1</b> The Modulus</a></li>
+<li class="chapter" data-level="2.2.2" data-path="linear-algebra.html"><a href="linear-algebra.html#the-dot-product"><i class="fa fa-check"></i><b>2.2.2</b> The Dot Product</a></li>
+<li class="chapter" data-level="2.2.3" data-path="linear-algebra.html"><a href="linear-algebra.html#projections"><i class="fa fa-check"></i><b>2.2.3</b> Projections</a></li>
+<li class="chapter" data-level="2.2.4" data-path="linear-algebra.html"><a href="linear-algebra.html#changing-the-basis"><i class="fa fa-check"></i><b>2.2.4</b> Changing the Basis</a></li>
+<li class="chapter" data-level="2.2.5" data-path="linear-algebra.html"><a href="linear-algebra.html#linear-independence"><i class="fa fa-check"></i><b>2.2.5</b> Linear Independence</a></li>
+<li class="chapter" data-level="2.2.6" data-path="linear-algebra.html"><a href="linear-algebra.html#an-application"><i class="fa fa-check"></i><b>2.2.6</b> An Application</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="linear-algebra.html"><a href="linear-algebra.html#matrices"><i class="fa fa-check"></i><b>2.3</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="linear-algebra.html"><a href="linear-algebra.html#using-matrices-to-transform-space"><i class="fa fa-check"></i><b>2.3.1</b> Using Matrices to Transform Space</a></li>
+<li class="chapter" data-level="2.3.2" data-path="linear-algebra.html"><a href="linear-algebra.html#special-transformations"><i class="fa fa-check"></i><b>2.3.2</b> Special Transformations</a></li>
+<li class="chapter" data-level="2.3.3" data-path="linear-algebra.html"><a href="linear-algebra.html#matrix-composition"><i class="fa fa-check"></i><b>2.3.3</b> Matrix Composition</a></li>
+<li class="chapter" data-level="2.3.4" data-path="linear-algebra.html"><a href="linear-algebra.html#gaussian-elimination"><i class="fa fa-check"></i><b>2.3.4</b> Gaussian Elimination</a></li>
+<li class="chapter" data-level="2.3.5" data-path="linear-algebra.html"><a href="linear-algebra.html#matrix-inversion"><i class="fa fa-check"></i><b>2.3.5</b> Matrix Inversion</a></li>
+<li class="chapter" data-level="2.3.6" data-path="linear-algebra.html"><a href="linear-algebra.html#matrix-transpose"><i class="fa fa-check"></i><b>2.3.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="2.3.7" data-path="linear-algebra.html"><a href="linear-algebra.html#properties-of-inverse-and-transpose"><i class="fa fa-check"></i><b>2.3.7</b> Properties of Inverse and Transpose</a></li>
+<li class="chapter" data-level="2.3.8" data-path="linear-algebra.html"><a href="linear-algebra.html#determinants"><i class="fa fa-check"></i><b>2.3.8</b> Determinants</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="linear-mappings.html"><a href="linear-mappings.html"><i class="fa fa-check"></i><b>3</b> Linear Mappings</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="linear-mappings.html"><a href="linear-mappings.html#changing-basis"><i class="fa fa-check"></i><b>3.1</b> Changing Basis</a></li>
+<li class="chapter" data-level="3.2" data-path="linear-mappings.html"><a href="linear-mappings.html#another-example"><i class="fa fa-check"></i><b>3.2</b> Another Example</a></li>
+<li class="chapter" data-level="3.3" data-path="linear-mappings.html"><a href="linear-mappings.html#transformations-in-a-changed-basis"><i class="fa fa-check"></i><b>3.3</b> Transformations in a Changed Basis</a></li>
+<li class="chapter" data-level="3.4" data-path="linear-mappings.html"><a href="linear-mappings.html#orthogonal-matrices"><i class="fa fa-check"></i><b>3.4</b> Orthogonal Matrices</a></li>
+<li class="chapter" data-level="3.5" data-path="linear-mappings.html"><a href="linear-mappings.html#the-gram-schmidt-process"><i class="fa fa-check"></i><b>3.5</b> The Gram-Schmidt Process</a></li>
+<li class="chapter" data-level="3.6" data-path="linear-mappings.html"><a href="linear-mappings.html#an-example"><i class="fa fa-check"></i><b>3.6</b> An Example</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html"><i class="fa fa-check"></i><b>4</b> Eigenvalues and Eigenvectors</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#eigenvector-examples"><i class="fa fa-check"></i><b>4.1</b> Eigenvector Examples</a></li>
+<li class="chapter" data-level="4.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#calculating-eigenvectors"><i class="fa fa-check"></i><b>4.2</b> Calculating Eigenvectors</a></li>
+<li class="chapter" data-level="4.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#changing-the-eigenbasis"><i class="fa fa-check"></i><b>4.3</b> Changing the Eigenbasis</a></li>
+<li class="chapter" data-level="4.4" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#eigenbasis-example"><i class="fa fa-check"></i><b>4.4</b> Eigenbasis Example</a></li>
+<li class="chapter" data-level="4.5" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#the-pagerank-algorithm"><i class="fa fa-check"></i><b>4.5</b> The PageRank Algorithm</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
+<li class="divider"></li>
+<li><a href=" " target="blank"> </a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">When Models Meet Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="linear-mappings" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Linear Mappings<a href="linear-mappings.html#linear-mappings" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="changing-basis" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Changing Basis<a href="linear-mappings.html#changing-basis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Recall that the columns of a transformation matrix, are the axes of the new basis vectors of the mapping in my coordinate system. We now discuss how to change from one basis system to another.</p>
+<p>Consider two worlds, one for Alice and one for Bob. In Alice’s world, she has basis vectors given by our standard unit vectors <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span> and Bob has basis vectors (in Alice’s world) as <span class="math inline">\(\begin{pmatrix} 1\\ 1 \end{pmatrix}\)</span> and <span class="math inline">\(\begin{pmatrix} 3\\1 \end{pmatrix}\)</span>. Thus Bob’s transformation matrix is given by <span class="math inline">\(\begin{pmatrix} 3&amp;1\\ 1&amp;1 \end{pmatrix}\)</span> in Alice’s world.<br />
+In Bob’s world, he views his basis vectors as our standard basis vectors <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span>.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Now, consider a vector <span class="math inline">\(\begin{pmatrix} 3/2 \\ 1/2 \end{pmatrix}\)</span> in Bob’s world. We can map this into Alice’s world by calculating <span class="math display">\[\begin{pmatrix} 3 &amp; 1\\ 1&amp;1 \end{pmatrix} \begin{pmatrix} 3/2 \\ 1/2 \end{pmatrix} = \begin{pmatrix} 5 \\ 2 \end{pmatrix}.\]</span> Thus, Bob’s basis vectors, given in Alice’s world, multiplied by a vector given in terms of Bob’s world will yield the coordinates for the vector in Alice’s world.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>So, we know how to transform vectors in Bob’s world to Alice’s world. We want to reverse the process and, given the information at hand, transform a vector from Alice’s world to Bob’s world. If <span class="math inline">\(B\)</span> is the transformation matrix for Bob given in terms of Alice’s world, we can find <span class="math inline">\(B^{-1} = \begin{pmatrix} 1 &amp; -1/2 \\ -1/2 &amp; 3/2 \end{pmatrix}\)</span>. This represents the matrix of Alice’s basis vectors given in Bob’s world (Alice’s transformation matrix in Bob’s world). Now, if we take the vector <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \end{pmatrix}\)</span> in Alice’s world, we can map it into Bob’s world simply by computing <span class="math display">\[ \begin{pmatrix} 1 &amp; -1/2 \\ -1/2 &amp; 3/2 \end{pmatrix}\begin{pmatrix} 5 \\ 2 \end{pmatrix} = \begin{pmatrix} 3/2 \\ 1/2 \end{pmatrix}.\]</span></p>
+</div>
+<div id="another-example" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Another Example<a href="linear-mappings.html#another-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consider another situation in which Alice has unit basis vectors <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span> in her world and Bob has basis vectors <span class="math inline">\(\begin{pmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{pmatrix}\)</span> and <span class="math inline">\(\begin{pmatrix} -1/\sqrt{2} \\ 1/\sqrt{2} \end{pmatrix}\)</span>, in Alice’s world. A quick dot product will show that Bob’s unit vectors are orthogonal to each other.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>Bob’s transformation matrix is <span class="math inline">\(B = \begin{pmatrix} 1/\sqrt{2} &amp; -1/\sqrt{2}\\ 1/\sqrt{2} &amp; -1/\sqrt{2}\end{pmatrix}\)</span> in Alice’s world. Now, consider a vector <span class="math inline">\(\begin{pmatrix} 2\\1\end{pmatrix}\)</span> in Bob’s world. We can map that into Alice’s world <span class="math display">\[\begin{pmatrix} 1/\sqrt{2} &amp; -1/\sqrt{2}\\  1/\sqrt{2} &amp; -1/\sqrt{2}\end{pmatrix} \begin{pmatrix} 2\\1\end{pmatrix} = \begin{pmatrix} 1/\sqrt{2} \\ 3/\sqrt{2}\end{pmatrix}.\]</span> To do the reverse transformation, we find the inverse of <span class="math inline">\(B\)</span> given by <span class="math inline">\(B^{-1} = \begin{pmatrix} 1/\sqrt{2} &amp; 1/\sqrt{2}\\ -1/\sqrt{2} &amp; 1/\sqrt{2}\end{pmatrix}\)</span>. We map the vector <span class="math inline">\(\begin{pmatrix} 1/\sqrt{2}\\3/\sqrt{2}\end{pmatrix}\)</span> from Alice’s world into Bob’s world as follows <span class="math display">\[ \begin{pmatrix} 1/\sqrt{2} &amp; 1/\sqrt{2}\\  -1/\sqrt{2} &amp; 1/\sqrt{2}\end{pmatrix} \begin{pmatrix} 1/\sqrt{2}\\3/\sqrt{2}\end{pmatrix} = \begin{pmatrix} 2\\1\end{pmatrix}.\]</span></p>
+<p>Interestingly, since Bob’s basis vectors are orthogonal in Alice’s world, we can do this same calculation with projections. We can take the vector <span class="math inline">\(\begin{pmatrix} 1/\sqrt{2}\\3/\sqrt{2}\end{pmatrix}\)</span> in Alice’s world and compute the dot product of that vector with Bob’s unit vectors (in Alice’s world). Thus, we get <span class="math display">\[\begin{pmatrix} 1/\sqrt{2}\\3/\sqrt{2}\end{pmatrix} \cdot \begin{pmatrix} 1/\sqrt{2}\\1/\sqrt{2}\end{pmatrix} = 2.\]</span> This gives the first component of the vector in Bob’s world (since this was the first of Bob’s unit vectors). Moreover, <span class="math display">\[\begin{pmatrix} 1/\sqrt{2}\\3/\sqrt{2}\end{pmatrix} \cdot \begin{pmatrix} -1/\sqrt{2}\\1/\sqrt{2}\end{pmatrix} = 1,\]</span> the second component of the vector given in Bob’s world.</p>
+</div>
+<div id="transformations-in-a-changed-basis" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Transformations in a Changed Basis<a href="linear-mappings.html#transformations-in-a-changed-basis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suppose Alice wants to take a vector in Bob’s world and rotate it 45 degrees in Bob’s world. Unfortunately, she doesn’t know how to do that in Bob’s world - only in her own. How does she take the vector <span class="math inline">\(\begin{pmatrix} x \\ y\end{pmatrix}\)</span> (in Bob’s coordinate world) and rotate it (or more generally, how does she apply a transformation when she only knows transformations in her world)? First, Alice takes the vector and maps it into her own world using Bob’s transformation matrix <span class="math inline">\(B = \begin{pmatrix} 3 &amp; 1 \\ 1 &amp; 1\end{pmatrix}\)</span> by computing <span class="math inline">\(B\begin{pmatrix} x \\ y\end{pmatrix}\)</span>. This is now a vector in Alice’s world and we can apply the 45 degree rotation in Alice’s world to that matrix. To rotate the vector, she applies the rotation matrix transformation (from Alice’s world) <span class="math inline">\(R = \begin{pmatrix} 1/\sqrt{2} &amp; -1/\sqrt{2} \\ 1/\sqrt{2} &amp; 1/\sqrt{2}\end{pmatrix}\)</span> to the vector in Alice’s world. Thus, the rotated vector in Alice’s world is <span class="math inline">\(RB\begin{pmatrix} x \\ y\end{pmatrix}\)</span>. To map the vector back into Bob’s world, we apply the transformation matrix that transforms vectors from Alice’s world into Bob’s world, <span class="math inline">\(B^{-1}\)</span>. And so, we end up with <span class="math inline">\(B^{-1}RB\begin{pmatrix} x \\ y\end{pmatrix}\)</span> which gives us the rotated vector in Bob’s coordinate world. Therefore, a rotation in Bob’s coordinate world can be computed as <span class="math inline">\(B^{-1}RB\)</span>. This works for any transformation.</p>
+<p>One can compute the rotation matrix in Bob’s world by <span class="math display">\[B^{-1}RB = \begin{pmatrix} 1/2 &amp; -1/2 \\ -1/2 &amp; 3/2\end{pmatrix}\begin{pmatrix} 1/\sqrt{2} &amp; -1/\sqrt{2} \\ 1/\sqrt{2} &amp; 1/\sqrt{2}\end{pmatrix}\begin{pmatrix} 3 &amp; 1 \\ 1 &amp; 1\end{pmatrix}  = \begin{pmatrix} -1/\sqrt{2} &amp; -1/\sqrt{2} \\ 5/\sqrt{2} &amp; 3/\sqrt{2}\end{pmatrix}.\]</span> The point here is that we can perform the same sort of matrix transformations in different basis systems; however, the matrix that we use to transform will change depending on the system and the new transformation will take the form <span class="math inline">\(B^{-1}RB\)</span>, where <span class="math inline">\(B\)</span> is the matrix of the new basis in our standard coordinate system and <span class="math inline">\(R\)</span> is the transformation in our standard coordinate system.</p>
+</div>
+<div id="orthogonal-matrices" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Orthogonal Matrices<a href="linear-mappings.html#orthogonal-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>It is useful to be able to create a transformation matrix whose column vectors make up a basis and whose column vectors are orthogonal.</p>
+<p>We begin with the idea of a matrix transpose. In short, the transpose of a matrix <span class="math inline">\(A\)</span> is denoted <span class="math inline">\(A^T\)</span> and is defined to be <span class="math inline">\(A_{ij}^T = A_{ji}\)</span>. Or, <span class="math inline">\(\begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}\)</span> as an example.</p>
+<p>Consider a matrix <span class="math inline">\(A\)</span> that is <span class="math inline">\(n \times n\)</span> with the properties that <span class="math inline">\(A = \begin{pmatrix} \begin{pmatrix} \; \\ a_1\\ \; \end{pmatrix} &amp; \begin{pmatrix} \; \\ a_2 \\ \;\end{pmatrix} &amp; \cdots &amp; \begin{pmatrix} \; \\ a_n \\ \; \end{pmatrix} \end{pmatrix},\)</span> and <span class="math inline">\(a_{i} \cdot a_j = \begin{cases} 0 &amp; i \not = j\\ 1 &amp; i = j \end{cases}\)</span>. That is, the column vectors of <span class="math inline">\(A\)</span> are of unit length and are orthogonal to each other. For such an <span class="math inline">\(A\)</span>, we can verify that <span class="math inline">\(A^TA = I\)</span> since this multiplication is a series of dot products. However, this means that <span class="math inline">\(A^T\)</span> is the inverse of <span class="math inline">\(A\)</span>.</p>
+<p>A set of vectors that satisfy the property of <span class="math inline">\(a_{i} \cdot a_j = \begin{cases} 0 &amp; i \not = j\\ 1 &amp; i = j \end{cases}\)</span> are called an orthonormal basis set and a matrix composed of them is called an orthogonal matrix. The determinant of an orthogonal matrix must be <span class="math inline">\(\pm 1\)</span> and thus it scales space by a factor of one. Note that the rows of an orthogonal matrix must also be orthonormal. This will be the most convenient set of basis vectors, for data science calculations, due to the properties that we have discussed above.</p>
+</div>
+<div id="the-gram-schmidt-process" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> The Gram-Schmidt Process<a href="linear-mappings.html#the-gram-schmidt-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suppose <span class="math inline">\(V = \{v_1, v2, \ldots v_n\}\)</span> span an <span class="math inline">\(n\)</span>-dimensional space. If we want to check linear independence, we would simply check that the determinant is non-zero. Suppose also that they are not necessarily orthogonal nor are they of unit length. The goal here is to construct an orthonormal basis and the procedure for doing this is the Gram-Schmidt process.</p>
+<p>First, we define <span class="math inline">\(e_1 = \dfrac{v_1}{|v_1|}\)</span>. This will be our first basis vector. Now, think of <span class="math inline">\(v_2\)</span> as being composed of two components - the vector projection of <span class="math inline">\(v_2\)</span> in the direction of <span class="math inline">\(e_1\)</span> and some component <span class="math inline">\(u_2\)</span> that is perpendicular to <span class="math inline">\(e_1\)</span>. Thus, <span class="math inline">\(v_2 = (v_2 \cdot e_1)e_1 + u_2\)</span> or equivalently, <span class="math inline">\(u_2 = v_2 - (v_2 \cdot e_1)e_1\)</span>. We then define <span class="math inline">\(e_2 = \dfrac{u_2}{|u_2|}\)</span>. In general, we define <span class="math inline">\(u_i = v_i - \sum_{j=1}^i (v_i \cdot e_j)e_j\)</span> and <span class="math inline">\(e_i = \dfrac{u_i}{|u_i|}\)</span>, we have created a set of basis vectors <span class="math inline">\(e_i\)</span> which are all orthogonal to each other and are of unit length. Thus, the set of <span class="math inline">\(\{e_i\}_{i=1}^n\)</span> forms an orthonormal basis.</p>
+</div>
+<div id="an-example" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> An Example<a href="linear-mappings.html#an-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consider two vectors <span class="math inline">\(v_1 = \begin{pmatrix} 1 \\ 1 \\ 1\end{pmatrix}\)</span> and <span class="math inline">\(v_2 = \begin{pmatrix} 2 \\ 0 \\ 1\end{pmatrix}\)</span> both in the plane and a vector <span class="math inline">\(v_3 = \begin{pmatrix} 3 \\ 1 \\ -1\end{pmatrix}\)</span> that is not in the plane described by <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span>. We will first find an orthonormal basis for these vectors.</p>
+<p>Now, <span class="math inline">\(e_1 = \dfrac{v_1}{|v_1|} = \dfrac{1}{\sqrt{3}}\begin{pmatrix} 1 \\ 1 \\ 1\end{pmatrix}\)</span>.</p>
+<p>Next we find <span class="math display">\[u_2 = v_2 - (v_2 \cdot e_1)e_1 = \begin{pmatrix} 2 \\ 0 \\ 1\end{pmatrix} - \begin{pmatrix} 1 \\ 1 \\ 1\end{pmatrix} = \begin{pmatrix} 1 \\ -1 \\ 0\end{pmatrix}.\]</span> Normalizing, we find that <span class="math inline">\(e_2 = \dfrac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -1 \\ 0\end{pmatrix}\)</span>.</p>
+<p>Finally, <span class="math display">\[u_3 = v_3 - (v_3 \cdot e_1)e_1 - (v_3 \cdot e_2)e_2 = \begin{pmatrix} 3 \\ 1 \\ -1\end{pmatrix} - \begin{pmatrix} 1\\ 1 \\ 1\end{pmatrix} - \begin{pmatrix} 1\\ -1 \\ 0 \end{pmatrix}  = \begin{pmatrix} 1 \\ 1 \\ -2\end{pmatrix}.\]</span> Normalizing, we find that <span class="math inline">\(e_3 = \dfrac{1}{\sqrt{6}} \begin{pmatrix} 1 \\ 1 \\ -2\end{pmatrix}\)</span>.</p>
+<p>Therefore, the transformation matrix is <span class="math inline">\(E = \begin{pmatrix} 1/\sqrt{3} &amp; 1/\sqrt{2} &amp; 1/\sqrt{6} \\ 1/\sqrt{3} &amp; -1/\sqrt{2} &amp; 1/\sqrt{6}\\ 1/\sqrt{3} &amp; 0 &amp; -2/\sqrt{6}\end{pmatrix}\)</span>.</p>
+<p>Now, consider a vector <span class="math inline">\(r = \begin{pmatrix} 2 \\ 3 \\ 5 \end{pmatrix}\)</span> in <span class="math inline">\(\mathbb{R}^3\)</span>. We want to reflect <span class="math inline">\(r\)</span> through the plane created by <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span> (or <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span>) and out the opposite side to where it currently sits. We can think of <span class="math inline">\(r\)</span> as being composed of a portion that is in the <span class="math inline">\(e_1\)</span>, <span class="math inline">\(e_2\)</span> plane and some part that is perpendicular to the plane. The part that is perpendicular to the plane (ie, the part formed by <span class="math inline">\(e_3\)</span>), we will simply make negative to create this reflection. Therefore, the transformation matrix (in terms of the <span class="math inline">\(E\)</span> basis) is <span class="math inline">\(T_E = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; -1 \end{pmatrix}\)</span>. So, if we take <span class="math inline">\(r\)</span> and map it to the <span class="math inline">\(E\)</span> basis, reflect it using <span class="math inline">\(T_E\)</span>, then map it back to <span class="math inline">\(\mathbb{R}^3\)</span>, we will have the reflection. Mathematically, we map <span class="math inline">\(r\)</span> into basis <span class="math inline">\(E\)</span> using <span class="math inline">\(E^{-1}\)</span>, transform (reflect) it using <span class="math inline">\(T_E\)</span>, then move it back to <span class="math inline">\(\mathbb{R}^3\)</span> using <span class="math inline">\(E\)</span>. Our final answer will therefore be <span class="math display">\[E T_E E^{-1} r = \begin{pmatrix} 1/3 + 1/2 - 1/6 &amp; 1/3 - 1/2 - 1/6 &amp; 1/3 + 0 + 1/6\\ 1/3-1/2-1/6 &amp; 1/3 + 1/2 - 1/6 &amp; 1/3 + 0 + 2/6\\ 1/3 + 0 + 2/6 &amp; 1/3 + 0 + 2/6 &amp; 1/3 + 0 - 4/6 \end{pmatrix}\begin{pmatrix} 2 \\ 3 \\5 \end{pmatrix} = \dfrac{1}{3} \begin{pmatrix} 2 &amp; -1 &amp; 2\\ -1 &amp; 2 &amp; 2 \\ 2 &amp; 2 &amp; -1\end{pmatrix} \begin{pmatrix} 2 \\ 3 \\5 \end{pmatrix} = \dfrac{1}{3}\begin{pmatrix} 11 \\ 14 \\ 5 \end{pmatrix}, \]</span> where <span class="math inline">\(E^{-1} = E^T\)</span>. This is a vector that is reflected through the <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span> plane.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="linear-algebra.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="eigenvalues-and-eigenvectors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-LinearMappings.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
