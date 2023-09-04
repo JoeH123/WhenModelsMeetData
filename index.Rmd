@@ -11,6 +11,26 @@ link-citations: yes
 github-repo: rstudio/bookdown-demo
 ---
 
+
+```{r setup, include=FALSE}
+options(
+  htmltools.dir.version = FALSE, formatR.indent = 2, width = 55, digits = 4
+)
+# install the packages needed by this book; you fill out c(), e.g. c('ggplot2', 'dplyr')
+lapply(c('xfun'), function(pkg) {
+  if (system.file(package = pkg) == '') install.packages(pkg)
+})
+
+
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(cache = TRUE)
+
+
+```
+
+
 # Introduction {-}
 
 Machine learning is a set of powerful mathematical tools that enable us, to represent, interpret, and control the complex world around us. The purpose of this section is to understand the math underlying these ideas.  We want to introduce the notational conventions, operations and ideas around linear algebra.  This will allow you to manipulate large systems of equations conveniently.
