@@ -31,15 +31,15 @@
   
 <link rel="prev" href="linear-mappings.html"/>
 <link rel="next" href="bibliography.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 
 
 
@@ -213,15 +213,6 @@ When <span class="math inline">\(\lambda = 2\)</span>, <span class="math inline"
 <h2><span class="header-section-number">4.5</span> The PageRank Algorithm<a href="eigenvalues-and-eigenvectors.html#the-pagerank-algorithm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The PageRank algorithm was published by and named after Google founder Larry Page and colleagues in 1998. Google uses it to decide the order of websites it displays after a search. The basic idea is that the importance of a website is related to the number of websites that link to it and from it.</p>
 <p>Consider 4 websites and the extent to which each website contains a link to another website. We can visualize this as a graph.</p>
-<pre><code>## Warning: package &#39;igraph&#39; was built under R version 4.2.2</code></pre>
-<pre><code>## 
-## Attaching package: &#39;igraph&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     decompose, spectrum</code></pre>
-<pre><code>## The following object is masked from &#39;package:base&#39;:
-## 
-##     union</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>We can write down the matrix that governs the links by displaying a 1 if the website given by the column links to the website in the given row. Hence we have <span class="math inline">\(\begin{pmatrix}0&amp;1&amp;0&amp;0\\1&amp;0&amp;0&amp;1\\1&amp;0&amp;0&amp;1\\1&amp;1&amp;1&amp;0 \end{pmatrix}\)</span>. Now, define <span class="math inline">\(L\)</span> as the previous matrix; however, we divide each column vector by the number of links on the website. Hence <span class="math inline">\(L = \begin{pmatrix}0&amp;1/2&amp;0&amp;0\\1/3&amp;0&amp;0&amp;1/2\\1/3&amp;0&amp;0&amp;1/2\\1/3&amp;1/2&amp;1&amp;0 \end{pmatrix}\)</span>. This matrix <span class="math inline">\(L\)</span> gives the probability of ending up on a page (by randomly), given that we are on a particular page.</p>
 <p>To determine the rank of page <span class="math inline">\(A\)</span>, we need to know three things: (a) what is your rank, (b) do you link to page <span class="math inline">\(A\)</span> and (c) how many outgoing links do you have on your page. Here, <span class="math inline">\(r_A = \sum_{j=1}^n L_{A,j}r_j\)</span> since the rank of <span class="math inline">\(A\)</span> is the sum of all of the probabilities that link to <span class="math inline">\(A\)</span> times the ranks of those particular pages. In total, <span class="math inline">\(r = Lr\)</span> because this is simply a matrix multiplication problem. If we initially assume that each rank is equal, then for 4 webpages, <span class="math inline">\(r_0 = \begin{pmatrix}1/4\\1/4\\1/4\\1/4 \end{pmatrix}\)</span> and then we multiply by <span class="math inline">\(L\)</span> repetedly, updating <span class="math inline">\(r\)</span> each time, to find the asymptotic solution. Thus <span class="math inline">\(r_{i+1} = Lr_i = L^{i+1}r_0\)</span>. Eventually, <span class="math inline">\(r_{i+1} = Lr_{i}\)</span> or <span class="math inline">\(r = Lr\)</span>. However, this means that <span class="math inline">\(r\)</span> is an eigenvector of <span class="math inline">\(L\)</span> with eigenvector 1. We simulate this to find (roughly) that <span class="math inline">\(r_{10} = \begin{pmatrix}0.12\\0.24\\0.24\\0.40 \end{pmatrix}\)</span>. Thus, website <span class="math inline">\(D\)</span> is most important and would randomly be viewed 40% of the time. <span class="math inline">\(A\)</span> is the least important and would be viewed randomly about 12% of the time. The important point here is that each website is ranked in terms of importance and thus are ranked in terms of how they should be displayed once they are searched for.</p>
@@ -237,14 +228,14 @@ When <span class="math inline">\(\lambda = 2\)</span>, <span class="math inline"
 <a href="bibliography.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
