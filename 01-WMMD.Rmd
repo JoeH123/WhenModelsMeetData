@@ -1,0 +1,26 @@
+# When Models Meet Data
+
+This course focuses on four pillars of machine learning:
+
+*  Regression
+*  Dimension Reduction
+*  Density Estimation
+*  Classification
+
+The goal is to provide the reader the mathematical foundation that can serve as a gateway for learners to apply knowledge widely when in industry.
+
+
+|![](MML3.png)|
+|:--:|
+
+##  Machine Learning Algorithms
+
+There are three main components of a machine learning system [@Deisenroth_Faisal_Ong_2020]:  data, models and learning.  Since machine learning is data driven, the idea of data is central to machine learning.  The ultimate goal of machine learning is to design general purpose methodologies to extract valuable patterns from data.  To achieve this goal, we design models that are related to the process that generates the data.  For example, if the data is an ordered collection of words, the model should be able to predict the order of new sets of words.  In particular, a model is said to learn from the data if its performance on a given task improves after the data is taken into account.  The goal is, of course, to generalize well to data that is yet unseen which we may care about in the future.  Finally, learning is the process of automatically finding patterns and structure in data by optimizing the parameters in the model.
+
+Next, we need to discuss what is meant by a "good model".  Typically, we want a model to perform well on unseen data and this requires the creation of some performance metrics.  These can be simple like "accuracy rate" or "$r^2$" or they could be very complicated.
+
+The phrase "machine learning algorithm" typically is used in two different contexts: training and prediction.  In the first context, a machine learning algorithm is a system that adapts some internal parameters of the predictor so that it performs well on future unseen input data.  In the second context, a machine learning algorithm is a system that makes predictions based on input data.
+
+When we talk about input data, we assume that it has been appropriately cleaned and is entirely numerical.  Thus, data can be seen as a vector in the sense of an array (computer science view), as a vector with both magnitude and direction (physics view) as well as an object that obeys addition and scaling (mathematical view).
+
+Since a model is typically used to describe a process for generating data similar to a given dataset, good models will therefore be thought of as a way to predict what would happen in the real world without performing any real-world experiment.

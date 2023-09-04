@@ -1,0 +1,23 @@
+--- 
+title: "When Models Meet Data"
+author: " "
+date: " "
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+# Introduction {-}
+
+Machine learning is a set of powerful mathematical tools that enable us, to represent, interpret, and control the complex world around us. The purpose of this section is to understand the math underlying these ideas.  We want to introduce the notational conventions, operations and ideas around linear algebra.  This will allow you to manipulate large systems of equations conveniently.
+
+This is a package of notes for DSCI 420, Mathematics for Machine Learning.  This package is an introduction to the course and is intended to be complementary to the textbook [Mathematics for Machine Learning](https://mml-book.github.io/book/mml-book.pdf), chapter 8 [@Deisenroth_Faisal_Ong_2020].  The information and graphics that follow come from that textbook unless otherwise specified.
+
+|![](MML1.png)|
+|:--:|
+
+Material in this course comes from a variety of branches of mathematics.  Here, we attempt to go through some of the basics of linear algebra.
